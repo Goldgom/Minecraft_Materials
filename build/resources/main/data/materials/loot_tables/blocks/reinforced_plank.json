@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materials:reinforced_plank"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                        "enchantments": [],
+                        "items": [
+                            "minecraft:golden_axe",
+                            "minecraft:iron_axe",
+                            "minecraft:diamond_axe",
+                            "minecraft:netherite_axe"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

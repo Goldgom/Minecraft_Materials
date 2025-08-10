@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materials:high_strength_glass"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                        "enchantments": [],
+                        "items": [
+                            "minecraft:netherite_pickaxe"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

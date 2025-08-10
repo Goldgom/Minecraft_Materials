@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "N": {
+      "item": "minecraft:netherrack"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "NIN",
+    "NNN"
+  ],
+  "result": {
+    "count": 2,
+    "item": "materials:reinforced_netherrack"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,320 @@
+[078月2025 21:58:28.221] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, C:\Users\ganyu\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mixin.config, materials.mixins.json]
+[078月2025 21:58:28.228] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.13 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[078月2025 21:58:28.455] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[078月2025 21:58:28.564] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[078月2025 21:58:28.752] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[078月2025 21:58:28.959] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/ganyu/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[078月2025 21:58:28.959] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: AMD Radeon(TM) Graphics GL version 4.6.0 Core Profile Context 25.6.1.250522, ATI Technologies Inc.
+[078月2025 21:58:29.635] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ganyu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[078月2025 21:58:29.644] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ganyu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[078月2025 21:58:29.653] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ganyu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[078月2025 21:58:29.666] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ganyu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
+[078月2025 21:58:30.582] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 12 dependencies adding them to mods collection
+[078月2025 21:58:34.412] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[078月2025 21:58:34.434] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\ganyu\.gradle\caches\forge_gradle\assets, --assetIndex, 5]
+[078月2025 21:58:34.669] [main/WARN] [mixin/]: Reference map 'materials.refmap.json' for materials.mixins.json could not be read. If this is a development environment you can ignore this message
+[078月2025 21:58:34.967] [main/INFO] [mixin/]: Remapping refMap jade.refmap.json using D:\Files\Project\Minecraft\Materials\build\createSrgToMcp\output.srg
+[078月2025 21:58:35.084] [main/INFO] [mixin/]: Remapping refMap ModernUI-Forge-ModernUI-Forge-refmap.json using D:\Files\Project\Minecraft\Materials\build\createSrgToMcp\output.srg
+[078月2025 21:58:35.095] [main/INFO] [mixin/]: Remapping refMap ModernUI-Forge-ModernUI-Forge-refmap.json using D:\Files\Project\Minecraft\Materials\build\createSrgToMcp\output.srg
+[078月2025 21:58:37.379] [main/WARN] [oshi.driver.windows.perfmon.PerfmonDisabled/]: Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[078月2025 21:58:42.212] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 188 Datafixer optimizations took 265 milliseconds
+[078月2025 21:58:45.651] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/ganyu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[078月2025 21:58:45.652] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/ganyu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[078月2025 21:58:45.692] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[078月2025 21:58:45.707] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[078月2025 21:58:45.915] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
+[078月2025 21:58:46.042] [Render thread/INFO] [ModernUI/Core]: Created MuiForgeAPI
+[078月2025 21:58:46.042] [Render thread/INFO] [ModernUI/Core]: Detected OpenGL 4.6 Core Profile from FML Early Window
+[078月2025 21:58:46.298] [Render thread/INFO] [Arc3D/]: Identified OpenGL vendor: ATI
+[078月2025 21:58:46.298] [Render thread/INFO] [Arc3D/]: Identified OpenGL driver: AMD
+[078月2025 21:58:46.298] [Render thread/INFO] [Arc3D/]: Using OpenGL 4.6 and GLSL 4.50
+[078月2025 21:58:46.298] [Render thread/INFO] [Arc3D/]: Use KHR_blend_equation_advanced_coherent
+[078月2025 21:58:46.364] [Render thread/INFO] [ModernUI/Core]: OpenGL vendor: ATI Technologies Inc.
+[078月2025 21:58:46.364] [Render thread/INFO] [ModernUI/Core]: OpenGL renderer: AMD Radeon(TM) Graphics
+[078月2025 21:58:46.364] [Render thread/INFO] [ModernUI/Core]: OpenGL version: 4.6.0 Core Profile Context 25.6.1.250522
+[078月2025 21:58:46.368] [Render thread/INFO] [ModernUI/Core]: OpenGL caps: 
+AnisotropySupport: true
+GpuTracingSupport: false
+ConservativeRasterSupport: false
+TextureBarrierSupport: true
+DepthClipNegativeOneToOne: true
+BlendEquationSupport: ADVANCED_COHERENT
+ClampToBorderSupport: true
+MaxRenderTargetSize: 16384
+MaxPreferredRenderTargetSize: 16384
+MaxVertexAttributes: 32
+MaxVertexBindings: 32
+MaxTextureSize: 16384
+MaxPushConstantsSize: 0
+MaxColorAttachments: 8
+MinUniformBufferOffsetAlignment: 16
+MinStorageBufferOffsetAlignment: 4
+ShaderCaps:
+	TargetAPI: OPENGL_4_5
+	GLSLVersion: GLSL_450
+	SPIRVVersion: SPIRV_1_0
+	FMASupport: true
+	DualSourceBlendingSupport: true
+	PreferFlatInterpolation: true
+	VertexIDSupport: true
+	InfinitySupport: true
+	NonConstantArrayIndexSupport: true
+	BitManipulationSupport: true
+	NoPerspectiveInterpolationSupport: true
+	ReducedShaderMode: false
+	TextureQueryLod: true
+	UseUniformBinding: true
+	UseVaryingLocation: true
+	UseBlockMemberOffset: true
+	UsePrecisionModifiers: false
+	RequiresLocalOutputColorForFBFetch: false
+	MustObfuscateUniformColor: false
+	MustWriteToFragColor: false
+	ColorSpaceMathNeedsFloat: false
+	AvoidDfDxForGradientsWhenPossible: false
+	SecondaryOutputExtension: null
+	AdvBlendEqInteraction: 2
+	MaxFragmentSamplers: 32
+Vendor: ATI
+Driver: AMD
+MaxFragmentUniformVectors: 2000
+MaxTextureMaxAnisotropy: 16.0
+SupportsProtected: false
+SkipErrorChecks: false
+MaxLabelLength: 256
+DebugSupport: true
+BufferStorageSupport: true
+DrawElementsBaseVertexSupport: true
+BaseInstanceSupport: true
+DSASupport: true
+InvalidateBufferType: 2
+InvalidateFramebufferSupport: true
+VertexAttribBindingSupport: true
+CopyImageSupport: true
+SPIRVSupport: true
+ViewCompatibilityClassSupport: true
+TexStorageSupport: true
+ProgramBinarySupport: true
+ProgramBinaryFormats: [1193046]
+GLSLVersion: 460
+ColorTypeToBackendFormat:
+	UNKNOWN=>GLenum [0x0]
+	BGR_565=>RGB565
+	R_8=>R8
+	RG_88=>RG8
+	RGB_888=>RGB8
+	RGBX_8888=>GLenum [0x0]
+	RGBA_8888=>RGBA8
+	BGRA_8888=>RGBA8
+	RGBA_8888_SRGB=>SRGB8_ALPHA8
+	RGBA_1010102=>RGB10_A2
+	BGRA_1010102=>RGB10_A2
+	R_16=>GLenum [0x0]
+	R_F16=>GLenum [0x0]
+	RG_1616=>RG16
+	RG_F16=>RG16F
+	RGBA_16161616=>RGBA16
+	RGBA_F16=>RGBA16F
+	RGBA_F16_CLAMPED=>RGBA16F
+	RGBA_F32=>GLenum [0x0]
+	ALPHA_8=>R8
+	ALPHA_16=>R16
+	ALPHA_F16=>R16F
+	GRAY_8=>R8
+	GRAY_ALPHA_88=>RG8
+	ABGR_8888=>GLenum [0x0]
+	ARGB_8888=>GLenum [0x0]
+CompressionTypeToBackendFormat: [null, {mBackend=OpenGL, mFormat=ETC2}, {mBackend=OpenGL, mFormat=RGB8_BC1}, {mBackend=OpenGL, mFormat=RGBA8_BC1}]
+
+[078月2025 21:58:46.535] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
+[078月2025 21:58:46.536] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
+[078月2025 21:58:46.801] [modloading-worker-0/INFO] [ModernUI/Core]: Created TextLayoutEngine
+[078月2025 21:58:46.802] [modloading-worker-0/INFO] [ModernUI/Core]: Initialized Modern UI text engine
+[078月2025 21:58:46.810] [modloading-worker-0/INFO] [ModernUI/Core]: Initialized Modern UI client
+[078月2025 21:58:46.811] [modloading-worker-0/INFO] [ModernUI-MC/Init]: Initialized Modern UI
+[078月2025 21:58:48.032] [Render thread/INFO] [ModernUI/UIManager]: UI manager initialized
+[078月2025 21:58:48.106] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [materials]
+[078月2025 21:58:48.311] [Render thread/INFO] [ModernUI/TextLayout]: Preloaded modern text shaders
+[078月2025 21:58:48.416] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources
+[078月2025 21:58:48.560] [Worker-Main-11/INFO] [ModernUI/Glyph]: Scanned emoji shortcodes: 6923
+[078月2025 21:58:48.568] [modloading-worker-0/ERROR] [net.minecraft.Util/]: Invalid path in pack: modernui:font/muii18ncompat/OFL.txt, ignoring
+[078月2025 21:58:48.569] [modloading-worker-0/ERROR] [net.minecraft.Util/]: Invalid path in pack: modernui:font/LICENSE.txt, ignoring
+[078月2025 21:58:48.572] [Worker-Main-9/ERROR] [net.minecraft.Util/]: Invalid path in pack: modernui:font/muii18ncompat/OFL.txt, ignoring
+[078月2025 21:58:48.574] [Worker-Main-9/ERROR] [net.minecraft.Util/]: Invalid path in pack: modernui:font/LICENSE.txt, ignoring
+[078月2025 21:58:48.575] [Worker-Main-10/ERROR] [net.minecraft.Util/]: Invalid path in pack: modernui:emoji/LICENSE.txt, ignoring
+[078月2025 21:58:48.925] [Worker-Main-10/INFO] [ModernUI/Glyph]: Scanned emoji map size: 3581
+[078月2025 21:58:49.082] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded raw font 'minecraft:alt' in pack: 'vanilla'
+[078月2025 21:58:49.083] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded raw font bundle: 'minecraft:font/alt.json', font set: [minecraft:include/space,minecraft:font/ascii_sga.png]
+[078月2025 21:58:49.085] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded raw font 'minecraft:default' in pack: 'vanilla'
+[078月2025 21:58:49.085] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded raw font bundle: 'minecraft:font/default.json', font set: [minecraft:include/space,minecraft:include/default]
+[078月2025 21:58:49.091] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded raw font 'minecraft:illageralt' in pack: 'vanilla'
+[078月2025 21:58:49.091] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded raw font bundle: 'minecraft:font/illageralt.json', font set: [minecraft:include/space,minecraft:font/asciillager.png]
+[078月2025 21:58:49.123] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded raw font 'minecraft:include/default' in pack: 'vanilla'
+[078月2025 21:58:49.124] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded raw font bundle: 'minecraft:font/include/default.json', font set: [minecraft:font/nonlatin_european.png,minecraft:font/accented.png,minecraft:font/ascii.png]
+[078月2025 21:58:49.145] [ForkJoinPool.commonPool-worker-1/INFO] [ModernUI/TextLayout]: Redirect registered font 'JetBrains Mono Medium' to 'modernui:jetbrains-mono-medium'
+[078月2025 21:58:49.145] [ForkJoinPool.commonPool-worker-2/INFO] [ModernUI/TextLayout]: Redirect registered font 'mui-i18n-compat' to 'modernui:mui-i18n-compat'
+[078月2025 21:58:49.145] [ForkJoinPool.commonPool-worker-3/INFO] [ModernUI/TextLayout]: Redirect registered font 'Source Han Sans CN Medium' to 'modernui:source-han-sans-cn-medium'
+[078月2025 21:58:49.146] [ForkJoinPool.commonPool-worker-2/INFO] [ModernUI/Core]: Registered font 'mui-i18n-compat', location 'modernui:font/muii18ncompat/muii18ncompat.ttf' in pack: 'mod_resources'
+[078月2025 21:58:49.146] [ForkJoinPool.commonPool-worker-1/INFO] [ModernUI/Core]: Registered font 'JetBrains Mono Medium', location 'modernui:font/jetbrains-mono-medium.ttf' in pack: 'mod_resources'
+[078月2025 21:58:49.146] [ForkJoinPool.commonPool-worker-3/INFO] [ModernUI/Core]: Registered font 'Source Han Sans CN Medium', location 'modernui:font/source-han-sans-cn-medium.otf' in pack: 'mod_resources'
+[078月2025 21:58:49.154] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded raw font 'minecraft:include/space' in pack: 'vanilla'
+[078月2025 21:58:49.155] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded raw font bundle: 'minecraft:font/include/space.json', font set: [minecraft:include/space / minecraft:space]
+[078月2025 21:58:49.176] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded font: 'minecraft:include/space', font set: [minecraft:include/space / minecraft:space]
+[078月2025 21:58:49.176] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded font: 'minecraft:include/default', font set: [minecraft:font/nonlatin_european.png,minecraft:font/accented.png,minecraft:font/ascii.png]
+[078月2025 21:58:49.177] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded font: 'minecraft:default', font set: [minecraft:include/space / minecraft:space,minecraft:font/nonlatin_european.png,minecraft:font/accented.png,minecraft:font/ascii.png]
+[078月2025 21:58:49.177] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded font: 'minecraft:illageralt', font set: [minecraft:include/space / minecraft:space,minecraft:font/asciillager.png]
+[078月2025 21:58:49.177] [Worker-Main-9/INFO] [ModernUI/TextLayout]: Loaded font: 'minecraft:alt', font set: [minecraft:include/space / minecraft:space,minecraft:font/ascii_sga.png]
+[078月2025 21:58:49.214] [modloading-worker-0/INFO] [ModernUI/Core]: Font 'Noto Sans' failed to load or invalid
+[078月2025 21:58:49.270] [modloading-worker-0/INFO] [ModernUI/Core]: Font 'San Francisco' failed to load or invalid
+[078月2025 21:58:49.272] [UI thread/INFO] [ModernUI/UIManager]: UI thread initialized in 1268ms
+[078月2025 21:58:49.326] [modloading-worker-0/INFO] [ModernUI/Core]: Font 'Open Sans' failed to load or invalid
+[078月2025 21:58:49.393] [modloading-worker-0/INFO] [ModernUI/Core]: Font 'STHeiti' failed to load or invalid
+[078月2025 21:58:49.396] [modloading-worker-0/INFO] [ModernUI/Core]: Loaded typeface: FontCollection{mFamilies=[Source Han Sans CN Medium, Segoe UI Variable, Segoe UI, SimHei, Segoe UI Symbol, mui-i18n-compat], mExclusiveEastAsianBits=null}
+[078月2025 21:58:49.443] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: HELLO FROM COMMON SETUP
+[078月2025 21:58:49.443] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: DIRT BLOCK >> minecraft:dirt
+[078月2025 21:58:49.444] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: The magic number is... 42
+[078月2025 21:58:49.446] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: ITEM >> iron_ingot
+[078月2025 21:58:49.448] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: EXP_BLOCK in mineable/axe: false
+[078月2025 21:58:49.449] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: EXP_BLOCK in needs_iron_tool: false
+[078月2025 21:58:49.449] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: FRAGILE_PLANK_BLOCK in mineable/axe: false
+[078月2025 21:58:49.450] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_PLANK_BLOCK in mineable/axe: false
+[078月2025 21:58:49.450] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_PLANK_BLOCK in needs_golden_tool: false
+[078月2025 21:58:49.450] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_SMOOTH_STONE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.450] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_SMOOTH_STONE_BLOCK in needs_iron_tool: false
+[078月2025 21:58:49.450] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: FRAGILE_SMOOTH_STONE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.450] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: BORDERLESS_GLASS_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.450] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: BORDERLESS_GLASS_BLOCK in needs_golden_tool: false
+[078月2025 21:58:49.450] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: HIGH_STRENGTH_GLASS_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.450] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: HIGH_STRENGTH_GLASS_BLOCK in needs_netherite_tool: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: SIX_PHASE_ICE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK in needs_netherite_tool: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: FRAGILE_DEEPSLATE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: FRAGILE_DEEPSLATE_BLOCK in needs_stone_tool: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_SANDSTONE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_SANDSTONE_BLOCK in needs_stone_tool: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_RED_SANDSTONE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_RED_SANDSTONE_BLOCK in needs_stone_tool: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_TUFF_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_TUFF_BLOCK in needs_golden_tool: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_NETHERRACK_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.451] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_NETHERRACK_BLOCK in needs_golden_tool: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_BASALT_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_BASALT_BLOCK in needs_golden_tool: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_BLACKSTONE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_BLACKSTONE_BLOCK in needs_golden_tool: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: FRAGILE_END_STONE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_END_STONE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_END_STONE_BLOCK in needs_diamond_tool: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: SYNTHETIC_OBSIDIAN_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: SYNTHETIC_OBSIDIAN_BLOCK in needs_netherite_tool: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_GRANITE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_GRANITE_BLOCK in needs_golden_tool: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_DIORITE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_DIORITE_BLOCK in needs_golden_tool: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_ANDESITE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: REINFORCED_ANDESITE_BLOCK in needs_golden_tool: false
+[078月2025 21:58:49.452] [Worker-Main-12/INFO] [org.materials.materials.Materials/]: DISSOLVED_STONE_BLOCK in mineable/pickaxe: false
+[078月2025 21:58:49.510] [Render thread/INFO] [ModernUI/TextLayout]: Loaded smart SDF text shaders
+[078月2025 21:58:49.514] [Render thread/INFO] [ModernUI/TextLayout]: Reloaded text layout engine, res level: 2 to 2, locale: zh_CN, layout RTL: false
+[078月2025 21:58:49.521] [Worker-Main-1/INFO] [org.materials.materials.Materials/]: HELLO FROM CLIENT SETUP
+[078月2025 21:58:49.521] [Worker-Main-1/INFO] [org.materials.materials.Materials/]: MINECRAFT NAME >> Dev
+[078月2025 21:58:49.525] [Worker-Main-15/INFO] [ModernUI/Core]: Loaded modern text engine
+[078月2025 21:58:49.570] [Render thread/INFO] [ModernUI/UIManager]: UI renderer initialized
+[078月2025 21:58:49.593] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[078月2025 21:58:49.917] [Worker-Main-11/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Unable to load model: 'materials:block/cnm' referenced from: materials:exp#: java.io.FileNotFoundException: materials:models/block/cnm.json
+[078月2025 21:58:49.926] [Worker-Main-11/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Unable to load model: 'modernui:project_builder#inventory' referenced from: modernui:project_builder#inventory: java.io.FileNotFoundException: modernui:models/item/project_builder.json
+[078月2025 21:58:49.927] [Worker-Main-11/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Unable to load model: 'modernui:item/project_builder_cube' referenced from: modernui:item/project_builder_cube: java.io.FileNotFoundException: modernui:models/item/project_builder_cube.json
+[078月2025 21:58:49.927] [Worker-Main-11/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Unable to load model: 'modernui:item/project_builder_main' referenced from: modernui:item/project_builder_main: java.io.FileNotFoundException: modernui:models/item/project_builder_main.json
+[078月2025 21:58:50.797] [Worker-Main-1/INFO] [Jade/]: Start loading plugin at snownee.jade.addon.vanilla.VanillaPlugin
+[078月2025 21:58:50.889] [Worker-Main-1/INFO] [Jade/]: Start loading plugin at snownee.jade.addon.universal.UniversalPlugin
+[078月2025 21:58:50.895] [Worker-Main-1/INFO] [Jade/]: Start loading plugin at snownee.jade.addon.core.CorePlugin
+[078月2025 21:58:50.903] [Worker-Main-1/INFO] [Jade/]: Dev environment detected, loading test plugin
+[078月2025 21:58:51.806] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: UP_TO_DATE Current: 47.4.0 Target: null
+[078月2025 21:58:52.316] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[078月2025 21:58:52.316] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[078月2025 21:58:52.895] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on 扬声器 (Realtek(R) Audio)
+[078月2025 21:58:52.896] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[078月2025 21:58:52.932] [Render thread/INFO] [ModernUI/Core]: Font 'Noto Sans' failed to load or invalid
+[078月2025 21:58:52.974] [Render thread/INFO] [ModernUI/Core]: Font 'San Francisco' failed to load or invalid
+[078月2025 21:58:53.012] [Render thread/INFO] [ModernUI/Core]: Font 'Open Sans' failed to load or invalid
+[078月2025 21:58:53.048] [Render thread/INFO] [ModernUI/Core]: Font 'STHeiti' failed to load or invalid
+[078月2025 21:58:53.050] [Render thread/INFO] [ModernUI/Core]: Reloaded typeface: FontCollection{mFamilies=[Google Noto Color Emoji, Source Han Sans CN Medium, Segoe UI Variable, Segoe UI, SimHei, Segoe UI Symbol, mui-i18n-compat], mExclusiveEastAsianBits=null}
+[078月2025 21:58:53.050] [Render thread/INFO] [ModernUI/Glyph]: Reloaded glyph manager
+[078月2025 21:58:53.051] [Render thread/INFO] [ModernUI/TextLayout]: Reloaded text layout engine, res level: 2 to 2, locale: zh_CN, layout RTL: false
+[078月2025 21:58:53.052] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[078月2025 21:58:53.062] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[078月2025 21:58:53.064] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[078月2025 21:58:53.064] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[078月2025 21:58:53.065] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[078月2025 21:58:53.074] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[078月2025 21:58:53.074] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[078月2025 21:58:53.074] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[078月2025 21:58:53.075] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[078月2025 21:58:53.556] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[078月2025 21:58:53.656] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[078月2025 21:58:53.658] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[078月2025 21:58:53.658] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[078月2025 21:58:54.284] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: 0
+[078月2025 21:58:56.340] [Render thread/INFO] [ModernUI/TextLayout]: Reloaded text layout engine, res level: 2 to 4, locale: zh_CN, layout RTL: false
+[078月2025 21:58:58.012] [Render thread/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: Injecting existing registry data into this CLIENT instance
+[078月2025 21:59:00.733] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
+[078月2025 21:59:00.855] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1294 advancements
+[078月2025 21:59:01.283] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.20.1
+[078月2025 21:59:01.283] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[078月2025 21:59:02.499] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[078月2025 21:59:05.897] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 准备生成区域中：0%
+[078月2025 21:59:05.897] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 准备生成区域中：0%
+[078月2025 21:59:05.898] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 准备生成区域中：0%
+[078月2025 21:59:05.898] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 准备生成区域中：0%
+[078月2025 21:59:05.898] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 准备生成区域中：0%
+[078月2025 21:59:05.898] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 准备生成区域中：0%
+[078月2025 21:59:05.898] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 准备生成区域中：0%
+[078月2025 21:59:06.022] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 准备生成区域中：0%
+[078月2025 21:59:06.511] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 准备生成区域中：17%
+[078月2025 21:59:07.018] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 准备生成区域中：83%
+[078月2025 21:59:07.143] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[078月2025 21:59:07.143] [Server thread/INFO] [org.materials.materials.Materials/]: HELLO from server starting
+[078月2025 21:59:07.145] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 4637 ms
+[078月2025 21:59:07.314] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
+[078月2025 21:59:07.316] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[078月2025 21:59:07.521] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
+[078月2025 21:59:08.313] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
+[078月2025 21:59:08.383] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:202736ec] logged in with entity id 140 at (-0.010278267707461028, 82.0, -4.438401546127689)
+[078月2025 21:59:08.471] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev加入了游戏
+[078月2025 21:59:08.709] [Server thread/INFO] [Jade/]: Syncing config to Dev (380df991-f603-344c-a090-369bad2a924a)
+[078月2025 21:59:09.044] [Render thread/INFO] [Jade/]: Received config from the server: 
+[078月2025 21:59:09.375] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 200 advancements
+[078月2025 22:01:53.805] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 211 advancements
+[078月2025 22:02:07.005] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 223 advancements
+[078月2025 22:02:13.902] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 234 advancements
+[078月2025 22:02:20.360] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 235 advancements
+[078月2025 22:02:31.856] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 239 advancements
+[078月2025 22:02:38.505] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 240 advancements
+[078月2025 22:02:46.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev取得了进度[石器时代]
+[078月2025 22:02:46.775] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Dev取得了进度[石器时代]
+[078月2025 22:02:46.805] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 262 advancements
+[078月2025 22:03:01.154] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 269 advancements
+[078月2025 22:03:10.906] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 270 advancements
+[078月2025 22:03:25.019] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev取得了进度[冰桶挑战]
+[078月2025 22:03:25.028] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Dev取得了进度[冰桶挑战]
+[078月2025 22:03:25.050] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 276 advancements
+[078月2025 22:04:20.404] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 277 advancements
+[078月2025 22:05:28.295] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[078月2025 22:05:28.323] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Amphoreus]'/minecraft:overworld
+[078月2025 22:05:28.336] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Amphoreus]'/minecraft:the_nether
+[078月2025 22:05:28.339] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Amphoreus]'/minecraft:the_end
+[078月2025 22:05:29.308] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: 连接中断
+[078月2025 22:05:29.308] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev退出了游戏
+[078月2025 22:05:29.339] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
+[078月2025 22:05:29.374] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[078月2025 22:05:29.376] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[078月2025 22:05:29.376] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[078月2025 22:05:29.964] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Amphoreus]'/minecraft:overworld
+[078月2025 22:05:30.719] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Amphoreus]'/minecraft:the_nether
+[078月2025 22:05:30.720] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Amphoreus]'/minecraft:the_end
+[078月2025 22:05:30.741] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (新的世界): All chunks are saved
+[078月2025 22:05:30.741] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[078月2025 22:05:30.741] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[078月2025 22:05:30.741] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[078月2025 22:05:46.595] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
