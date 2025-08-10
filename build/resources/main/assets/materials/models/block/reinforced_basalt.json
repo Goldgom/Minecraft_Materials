@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "side": "materials:block/reinforced_basalt",
-        "end": "materials:block/reinforced_basalt_top",
-        "end2": "materials:block/reinforced_basalt_top"
-    }
-}

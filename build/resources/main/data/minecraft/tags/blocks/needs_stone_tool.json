@@ -1,8 +1,0 @@
-{
-    "replace": false,
-    "values": [
-        "materials:fragile_deepslate",
-        "materials:reinforced_sandstone",
-        "materials:reinforced_red_sandstone"
-    ]
-}
