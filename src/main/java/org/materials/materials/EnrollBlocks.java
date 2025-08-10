@@ -1,8 +1,6 @@
 package org.materials.materials;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.food.FoodProperties;
@@ -94,8 +92,8 @@ public class EnrollBlocks
             )
     );
     // 注册名为 “六相冰” 的方块，采用冰颜色的默认属性
-    public static final RegistryObject<IceBlock> SIX_PHASE_ICE_BLOCK = BLOCKS.register("six_phase_ice", () ->
-            new IceBlock(BlockBehaviour.Properties.copy(Blocks.ICE) // 复制冰的属性
+    public static final RegistryObject<SpecialIceBlock> SIX_PHASE_ICE_BLOCK = BLOCKS.register("six_phase_ice", () ->
+            new SpecialIceBlock(BlockBehaviour.Properties.copy(Blocks.ICE) // 复制冰的属性
                     .strength(32.0f, 256.0f) // 设置方块的硬度和爆炸抗性
                     .friction(0.98f) // 设置方块的摩擦力
                     .noOcclusion() // 设置方块不会阻塞视线

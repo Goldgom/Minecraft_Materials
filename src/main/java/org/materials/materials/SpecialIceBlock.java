@@ -8,9 +8,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.BlockGetter;
 import javax.annotation.Nonnull;
 
-public class IceBlock extends Block
+public class SpecialIceBlock extends Block
 {
-    public IceBlock(Properties properties)
+    public SpecialIceBlock(Properties properties)
     {
         super(properties);
     }
