@@ -5,6 +5,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.BlockGetter;
+import javax.annotation.Nonnull;
 
 public class IceBlock extends Block
 {
@@ -14,12 +16,33 @@ public class IceBlock extends Block
     }
 
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving)
+    public void onRemove(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull BlockState newState, boolean isMoving)
     {
         super.onRemove(state, level, pos, newState, isMoving);
         if (!level.isClientSide && newState.isAir())
         {
             level.setBlock(pos, Blocks.WATER.defaultBlockState(), 3);
         }
+    }
+
+    // 让天光向下传播
+    @Override
+    public boolean propagatesSkylightDown(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos)
+    {
+        return true;
+    }
+
+    // 不阻挡方块光
+    @Override
+    public int getLightBlock(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos)
+    {
+        return 0;
+    }
+
+    // 避免环境光AO导致视觉变暗
+    @Override
+    public float getShadeBrightness(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos)
+    {
+        return 1.0F;
     }
 }

@@ -12,6 +12,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.GlassBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -80,39 +81,26 @@ public class EnrollBlocks
     );
     // 注册名为 无边框玻璃 的方块，采用玻璃颜色的默认属性
     public static final RegistryObject<Block> BORDERLESS_GLASS_BLOCK = BLOCKS.register("borderless_glass", () ->
-            new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE) // 设置方块的颜色
-                    .noOcclusion() // 设置方块无遮挡
+            new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS) // 复制玻璃的属性
                     .strength(1.125f, 100.0f) // 设置方块的硬度和爆炸抗性
-                    .sound(SoundType.GLASS) // 设置方块破坏时的音效
-                    .lightLevel((state) -> 0) // 设置方块的光照等级
-                    .isSuffocating((state, level, pos) -> false) // 设置方块不会阻挡玩家呼吸
-                    .isViewBlocking((state, level, pos) -> false) // 设置方块不会阻挡玩家视线
+                    .noOcclusion() // 设置方块不会阻塞视线
             )
     );
     // 注册名为 高强度玻璃 的方块，采用玻璃颜色的默认属性
     public static final RegistryObject<Block> HIGH_STRENGTH_GLASS_BLOCK = BLOCKS.register("high_strength_glass", () ->
-            new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE) // 设置方块的颜色
-                    .noOcclusion() // 设置方块无遮挡
+            new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)
                     .strength(12.0f, 1000.0f) // 设置方块的硬度和爆炸抗性
-                    .sound(SoundType.GLASS) // 设置方块破坏时的音效
-                    .lightLevel((state) -> 0) // 设置方块的光照等级
-                    .isSuffocating((state, level, pos) -> false) // 设置方块不会阻挡玩家呼吸
-                    .isViewBlocking((state, level, pos) -> false) // 设置方块不会阻挡玩家视线
+                    .noOcclusion() // 设置方块不会阻塞视线
             )
     );
     // 注册名为 “六相冰” 的方块，采用冰颜色的默认属性
     public static final RegistryObject<IceBlock> SIX_PHASE_ICE_BLOCK = BLOCKS.register("six_phase_ice", () ->
-            new IceBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.ICE) // 设置方块的颜色为冰颜色
-                    .noOcclusion() // 设置方块无遮挡
+            new IceBlock(BlockBehaviour.Properties.copy(Blocks.ICE) // 复制冰的属性
                     .strength(32.0f, 256.0f) // 设置方块的硬度和爆炸抗性
-                    .sound(SoundType.GLASS) // 设置方块破坏时的音效
                     .friction(0.98f) // 设置方块的摩擦力
-                    .lightLevel((state) -> 0) // 设置方块的光照等级
-                    .isSuffocating((state, level, pos) -> false) // 设置方块不会阻挡玩家呼吸
-                    .isViewBlocking((state, level, pos) -> false) // 设置方块不会阻挡玩家视线
+                    .noOcclusion() // 设置方块不会阻塞视线
+                    .isSuffocating((state, level, pos) -> false) // 设置方块不会阻挡呼吸
+                    .isViewBlocking((state, level, pos) -> false) // 设置方块不会阻塞视线
             )
     );
     // 注册名为 合成强化深板岩 的方块，采用石头颜色的默认属性

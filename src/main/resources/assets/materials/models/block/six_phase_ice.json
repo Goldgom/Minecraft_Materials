@@ -3,5 +3,6 @@
     "textures": {
         "all": "materials:block/six_phase_ice"
     },
-    "render_type": "translucent"
+    "render_type": "translucent",
+    "ambientocclusion": false
 }

@@ -3,5 +3,5 @@
     "textures": {
         "all": "materials:block/borderless_glass"
     },
-    "render_type": "cutout"
+    "render_type": "translucent"
 }
