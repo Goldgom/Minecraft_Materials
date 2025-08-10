@@ -31,3 +31,7 @@ out/
 # IntelliJ IDEA
 .idea/
 *.iml
+
+# 忽略 run、run-data 目录
+/run/
+/run-data/
