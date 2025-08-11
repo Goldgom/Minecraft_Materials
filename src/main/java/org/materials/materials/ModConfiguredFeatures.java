@@ -22,12 +22,12 @@ public class ModConfiguredFeatures
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) 
     {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Materials.MODID, name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Materials.MODID, name));
     }
 
     public static ResourceKey<PlacedFeature> registerPlacedKey(String name) 
     {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(Materials.MODID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Materials.MODID, name));
     }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstapContext<ConfiguredFeature<?, ?>> context,

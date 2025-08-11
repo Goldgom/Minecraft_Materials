@@ -28,6 +28,6 @@ public class ModBiomeModifiers
 
     private static ResourceKey<BiomeModifier> registerKey(String name) 
     {
-        return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Materials.MODID, name));
+        return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Materials.MODID, name));
     }
 }

@@ -27,12 +27,12 @@ public class Materials
     static final Logger LOGGER = LogUtils.getLogger();
 
     // 注册方块的注册表
-    public static final TagKey<Block> NEEDS_GOLDEN_TOOL = BlockTags.create(new ResourceLocation("minecraft", "needs_golden_tool"));
-    public static final TagKey<Block> NEEDS_NETHERITE_TOOL = BlockTags.create(new ResourceLocation("minecraft", "needs_netherite_tool"));
+    public static final TagKey<Block> NEEDS_GOLDEN_TOOL = BlockTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "needs_golden_tool"));
+    public static final TagKey<Block> NEEDS_NETHERITE_TOOL = BlockTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "needs_netherite_tool"));
 
-    public Materials()
+    public Materials(FMLJavaModLoadingContext context)
     {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus modEventBus = context.getModEventBus();
 
         // 注册自己的注册表
         EnrollBlocks.BLOCKS.register(modEventBus);
@@ -43,7 +43,7 @@ public class Materials
         modEventBus.addListener(EnrollBlocks::commonSetup);
         modEventBus.addListener(EnrollBlocks::addCreative);
         MinecraftForge.EVENT_BUS.register(this);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     @SubscribeEvent
