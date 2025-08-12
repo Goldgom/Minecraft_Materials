@@ -5,6 +5,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+
+import javax.annotation.Nonnull;
 //import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -15,7 +17,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -90,12 +91,13 @@ public class EnrollBlocks
             )
             {
                 @Override
-                public int getLightBlock(net.minecraft.world.level.block.state.BlockState state, net.minecraft.world.level.BlockGetter level, net.minecraft.core.BlockPos pos)
+                public int getLightBlock(@Nonnull net.minecraft.world.level.block.state.BlockState state, @Nonnull net.minecraft.world.level.BlockGetter level, @Nonnull net.minecraft.core.BlockPos pos)
                 {
                     return 0;
                 }
+
                 @Override
-                public float getShadeBrightness(net.minecraft.world.level.block.state.BlockState state, net.minecraft.world.level.BlockGetter level, net.minecraft.core.BlockPos pos)
+                public float getShadeBrightness(@Nonnull net.minecraft.world.level.block.state.BlockState state, @Nonnull net.minecraft.world.level.BlockGetter level, @Nonnull net.minecraft.core.BlockPos pos)
                 {
                     return 1.0F;
                 }
@@ -113,12 +115,13 @@ public class EnrollBlocks
             )
             {
                 @Override
-                public int getLightBlock(net.minecraft.world.level.block.state.BlockState state, net.minecraft.world.level.BlockGetter level, net.minecraft.core.BlockPos pos)
+                public int getLightBlock(@Nonnull net.minecraft.world.level.block.state.BlockState state, @Nonnull net.minecraft.world.level.BlockGetter level, @Nonnull net.minecraft.core.BlockPos pos)
                 {
                     return 0;
                 }
+
                 @Override
-                public float getShadeBrightness(net.minecraft.world.level.block.state.BlockState state, net.minecraft.world.level.BlockGetter level, net.minecraft.core.BlockPos pos)
+                public float getShadeBrightness(@Nonnull net.minecraft.world.level.block.state.BlockState state, @Nonnull net.minecraft.world.level.BlockGetter level, @Nonnull net.minecraft.core.BlockPos pos)
                 {
                     return 1.0F;
                 }
@@ -256,11 +259,12 @@ public class EnrollBlocks
             )
             {
                 @Override
-                public void stepOn(net.minecraft.world.level.Level level, net.minecraft.core.BlockPos pos, net.minecraft.world.level.block.state.BlockState state, net.minecraft.world.entity.Entity entity)
+                public void stepOn(@Nonnull net.minecraft.world.level.Level level, @Nonnull net.minecraft.core.BlockPos pos, @Nonnull net.minecraft.world.level.block.state.BlockState state, @Nonnull net.minecraft.world.entity.Entity entity)
                 {
                     super.stepOn(level, pos, state, entity);
                     if (!level.isClientSide && entity instanceof net.minecraft.world.entity.LivingEntity)
                     {
+                        // 依赖标准掉落表进行掉落，并移除方块
                         level.destroyBlock(pos, true, entity);
                     }
                 }
@@ -398,36 +402,5 @@ public class EnrollBlocks
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
     }
 
-    // 在 BuildCreativeModeTabContentsEvent 事件中添加物品到对应标签
-    static void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-        if (event.getTabKey().equals(MATERIALS_TAB_KEY))
-        {
-//            event.accept(EXAMPLE_ITEM.get());
-            event.accept(EXP_BLOCK_ITEM.get());
-            event.accept(FRAGILE_PLANK_BLOCK_ITEM.get());
-            event.accept(REINFORCED_PLANK_BLOCK_ITEM.get());
-            event.accept(REINFORCED_SMOOTH_STONE_BLOCK_ITEM.get());
-            event.accept(FRAGILE_SMOOTH_STONE_BLOCK_ITEM.get());
-            event.accept(BORDERLESS_GLASS_BLOCK_ITEM.get());
-            event.accept(HIGH_STRENGTH_GLASS_BLOCK_ITEM.get());
-            event.accept(SIX_PHASE_ICE_BLOCK_ITEM.get());
-            event.accept(SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK_ITEM.get());
-            event.accept(FRAGILE_DEEPSLATE_BLOCK_ITEM.get());
-            event.accept(REINFORCED_SANDSTONE_BLOCK_ITEM.get());
-            event.accept(REINFORCED_RED_SANDSTONE_BLOCK_ITEM.get());
-            event.accept(REINFORCED_TUFF_BLOCK_ITEM.get());
-            event.accept(REINFORCED_NETHERRACK_BLOCK_ITEM.get());
-            event.accept(REINFORCED_BASALT_BLOCK_ITEM.get());
-            event.accept(REINFORCED_BLACKSTONE_BLOCK_ITEM.get());
-            event.accept(FRAGILE_END_STONE_BLOCK_ITEM.get());
-            event.accept(REINFORCED_END_STONE_BLOCK_ITEM.get());
-            event.accept(SYNTHETIC_OBSIDIAN_BLOCK_ITEM.get());
-            event.accept(REINFORCED_GRANITE_BLOCK_ITEM.get());
-            event.accept(REINFORCED_DIORITE_BLOCK_ITEM.get());
-            event.accept(REINFORCED_ANDESITE_BLOCK_ITEM.get());
-            event.accept(DISSOLVED_STONE_BLOCK_ITEM.get());
-            event.accept(IMITATION_BEDROCK_BLOCK_ITEM.get());
-        }
-    }
+    // 移除事件式填充，改为仅使用自定义创造标签的 displayItems
 }

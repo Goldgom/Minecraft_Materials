@@ -1,4 +1,4 @@
-// 1.20.1	2025-08-06T22:17:38.0610073	Registries
-56120523be47b25827f5a4bf472c2b26de4267d4 data/materials/forge/biome_modifier/add_dissolved_stone.json
+// 1.21.1	2025-08-12T01:12:01.619839	Registries
+3fdc5faab3f825e5d9f7d379193b8deba332e0af data/materials/neoforge/biome_modifier/add_dissolved_stone.json
 6c1cb2d132d43048ca73eccd395a83e7ac054af2 data/materials/worldgen/configured_feature/dissolved_stone.json
 2363b10bd5c211a6d9bbd89ddcb8e47ed116c228 data/materials/worldgen/placed_feature/dissolved_stone.json

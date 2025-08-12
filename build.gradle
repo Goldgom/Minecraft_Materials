@@ -35,6 +35,10 @@ dependencies {
     implementation "net.neoforged:neoforge:${neoforge_version}"
     // annotation processor 仍用于生成 mixin refmap
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    // 运行时模组（使用用户提供的固定文件ID）
+    runtimeOnly "curse.maven:jade-324717:6853386"
+    runtimeOnly "curse.maven:modernui-352491:6200236"
 }
 
 // 使用 NeoGradle 的 runs DSL

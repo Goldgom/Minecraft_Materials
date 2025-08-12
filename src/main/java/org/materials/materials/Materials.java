@@ -2,6 +2,7 @@ package org.materials.materials;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -41,7 +42,7 @@ public class Materials
         ModFeatures.FEATURES.register(modEventBus);
 
         modEventBus.addListener(EnrollBlocks::commonSetup);
-        modEventBus.addListener(EnrollBlocks::addCreative);
+        // 自定义创造标签已通过 CREATIVE_MODE_TABS 的 displayItems 填充，此处不再通过事件重复添加
         // 数据生成监听已由 org.materials.materials.datagen.DataGenerators 处理
 
         NeoForge.EVENT_BUS.register(this);
@@ -52,6 +53,17 @@ public class Materials
     public void onServerStarting(ServerStartingEvent event)
     {
         LOGGER.info("HELLO from server starting");
+
+        // 验证方块注册
+        ResourceLocation testBlock = ResourceLocation.fromNamespaceAndPath(MODID, "exp");
+        if (BuiltInRegistries.BLOCK.containsKey(testBlock))
+        {
+            LOGGER.info("Server test PASSED: Blocks registered successfully");
+        }
+        else
+        {
+            LOGGER.error("Server test FAILED: Blocks not registered");
+        }
     }
 
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
