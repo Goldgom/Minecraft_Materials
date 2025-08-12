@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nonnull;
 //import net.minecraft.world.food.FoodProperties;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -18,10 +19,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.*;
 
 import static org.materials.materials.Materials.*;
 
@@ -142,6 +140,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .strength(50.0f, 1200.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.DEEPSLATE)
                     .lightLevel((state) -> 0)
             )
@@ -150,6 +149,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .strength(1.6f, 6.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.DEEPSLATE)
                     .lightLevel((state) -> 0)
             )
@@ -158,6 +158,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.SAND)
                     .strength(3.0f, 12.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.SAND)
                     .lightLevel((state) -> 0)
             )
@@ -166,6 +167,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_ORANGE)
                     .strength(3.0f, 12.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.SAND)
                     .lightLevel((state) -> 0)
             )
@@ -174,6 +176,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .strength(6.0f, 20.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.TUFF)
                     .lightLevel((state) -> 0)
             )
@@ -182,6 +185,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.NETHER)
                     .strength(4.0f, 12.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.NETHERRACK)
                     .lightLevel((state) -> 0)
             )
@@ -190,6 +194,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .strength(5.0f, 20.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.BASALT)
                     .lightLevel((state) -> 0)
             )
@@ -198,6 +203,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .strength(6.0f, 20.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)
                     .lightLevel((state) -> 0)
             )
@@ -214,14 +220,17 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.SAND)
                     .strength(45.0f, 64.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)
                     .lightLevel((state) -> 0)
+                    .requiresCorrectToolForDrops()
             )
     );
     public static final DeferredBlock<Block> SYNTHETIC_OBSIDIAN_BLOCK = BLOCKS.register("synthetic_obsidian", () ->
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .strength(64.0f, 1200.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)
                     .lightLevel((state) -> 0)
             )
@@ -230,6 +239,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .strength(6.0f, 20.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)
                     .lightLevel((state) -> 0)
             )
@@ -238,6 +248,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .strength(6.0f, 20.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)
                     .lightLevel((state) -> 0)
             )
@@ -246,6 +257,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .strength(6.0f, 20.0f)
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)
                     .lightLevel((state) -> 0)
             )
@@ -400,7 +412,48 @@ public class EnrollBlocks
             LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
-    }
 
-    // 移除事件式填充，改为仅使用自定义创造标签的 displayItems
+        // 运行时可改为如下检查：
+        LOGGER.info("EXP_BLOCK in mineable/axe: {}", EXP_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_AXE));
+        LOGGER.info("EXP_BLOCK in needs_iron_tool: {}", EXP_BLOCK.get().defaultBlockState().is(BlockTags.NEEDS_IRON_TOOL));
+        LOGGER.info("FRAGILE_PLANK_BLOCK in mineable/axe: {}", FRAGILE_PLANK_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_AXE));
+        LOGGER.info("REINFORCED_PLANK_BLOCK in mineable/axe: {}", REINFORCED_PLANK_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_AXE));
+        LOGGER.info("REINFORCED_PLANK_BLOCK in needs_golden_tool: {}", REINFORCED_PLANK_BLOCK.get().defaultBlockState().is(NEEDS_GOLDEN_TOOL));
+        LOGGER.info("REINFORCED_SMOOTH_STONE_BLOCK in mineable/pickaxe: {}", REINFORCED_SMOOTH_STONE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_SMOOTH_STONE_BLOCK in needs_iron_tool: {}", REINFORCED_SMOOTH_STONE_BLOCK.get().defaultBlockState().is(BlockTags.NEEDS_IRON_TOOL));
+        LOGGER.info("FRAGILE_SMOOTH_STONE_BLOCK in mineable/pickaxe: {}", FRAGILE_SMOOTH_STONE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("BORDERLESS_GLASS_BLOCK in mineable/pickaxe: {}", BORDERLESS_GLASS_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("BORDERLESS_GLASS_BLOCK in needs_golden_tool: {}", BORDERLESS_GLASS_BLOCK.get().defaultBlockState().is(NEEDS_GOLDEN_TOOL));
+        LOGGER.info("HIGH_STRENGTH_GLASS_BLOCK in mineable/pickaxe: {}", HIGH_STRENGTH_GLASS_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("HIGH_STRENGTH_GLASS_BLOCK in needs_netherite_tool: {}", HIGH_STRENGTH_GLASS_BLOCK.get().defaultBlockState().is(NEEDS_NETHERITE_TOOL));
+        LOGGER.info("SIX_PHASE_ICE_BLOCK in mineable/pickaxe: {}", SIX_PHASE_ICE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK in mineable/pickaxe: {}", SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK in needs_netherite_tool: {}", SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK.get().defaultBlockState().is(NEEDS_NETHERITE_TOOL));
+        LOGGER.info("FRAGILE_DEEPSLATE_BLOCK in mineable/pickaxe: {}", FRAGILE_DEEPSLATE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("FRAGILE_DEEPSLATE_BLOCK in needs_stone_tool: {}", FRAGILE_DEEPSLATE_BLOCK.get().defaultBlockState().is(BlockTags.NEEDS_STONE_TOOL));
+        LOGGER.info("REINFORCED_SANDSTONE_BLOCK in mineable/pickaxe: {}", REINFORCED_SANDSTONE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_SANDSTONE_BLOCK in needs_stone_tool: {}", REINFORCED_SANDSTONE_BLOCK.get().defaultBlockState().is(BlockTags.NEEDS_STONE_TOOL));
+        LOGGER.info("REINFORCED_RED_SANDSTONE_BLOCK in mineable/pickaxe: {}", REINFORCED_RED_SANDSTONE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_RED_SANDSTONE_BLOCK in needs_stone_tool: {}", REINFORCED_RED_SANDSTONE_BLOCK.get().defaultBlockState().is(BlockTags.NEEDS_STONE_TOOL));
+        LOGGER.info("REINFORCED_TUFF_BLOCK in mineable/pickaxe: {}", REINFORCED_TUFF_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_TUFF_BLOCK in needs_golden_tool: {}", REINFORCED_TUFF_BLOCK.get().defaultBlockState().is(NEEDS_GOLDEN_TOOL));
+        LOGGER.info("REINFORCED_NETHERRACK_BLOCK in mineable/pickaxe: {}", REINFORCED_NETHERRACK_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_NETHERRACK_BLOCK in needs_golden_tool: {}", REINFORCED_NETHERRACK_BLOCK.get().defaultBlockState().is(NEEDS_GOLDEN_TOOL));
+        LOGGER.info("REINFORCED_BASALT_BLOCK in mineable/pickaxe: {}", REINFORCED_BASALT_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_BASALT_BLOCK in needs_golden_tool: {}", REINFORCED_BASALT_BLOCK.get().defaultBlockState().is(NEEDS_GOLDEN_TOOL));
+        LOGGER.info("REINFORCED_BLACKSTONE_BLOCK in mineable/pickaxe: {}", REINFORCED_BLACKSTONE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_BLACKSTONE_BLOCK in needs_golden_tool: {}", REINFORCED_BLACKSTONE_BLOCK.get().defaultBlockState().is(NEEDS_GOLDEN_TOOL));
+        LOGGER.info("FRAGILE_END_STONE_BLOCK in mineable/pickaxe: {}", FRAGILE_END_STONE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_END_STONE_BLOCK in mineable/pickaxe: {}", REINFORCED_END_STONE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_END_STONE_BLOCK in needs_diamond_tool: {}", REINFORCED_END_STONE_BLOCK.get().defaultBlockState().is(BlockTags.NEEDS_DIAMOND_TOOL));
+        LOGGER.info("SYNTHETIC_OBSIDIAN_BLOCK in mineable/pickaxe: {}", SYNTHETIC_OBSIDIAN_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("SYNTHETIC_OBSIDIAN_BLOCK in needs_netherite_tool: {}", SYNTHETIC_OBSIDIAN_BLOCK.get().defaultBlockState().is(NEEDS_NETHERITE_TOOL));
+        LOGGER.info("REINFORCED_GRANITE_BLOCK in mineable/pickaxe: {}", REINFORCED_GRANITE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_GRANITE_BLOCK in needs_golden_tool: {}", REINFORCED_GRANITE_BLOCK.get().defaultBlockState().is(NEEDS_GOLDEN_TOOL));
+        LOGGER.info("REINFORCED_DIORITE_BLOCK in mineable/pickaxe: {}", REINFORCED_DIORITE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_DIORITE_BLOCK in needs_golden_tool: {}", REINFORCED_DIORITE_BLOCK.get().defaultBlockState().is(NEEDS_GOLDEN_TOOL));
+        LOGGER.info("REINFORCED_ANDESITE_BLOCK in mineable/pickaxe: {}", REINFORCED_ANDESITE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        LOGGER.info("REINFORCED_ANDESITE_BLOCK in needs_golden_tool: {}", REINFORCED_ANDESITE_BLOCK.get().defaultBlockState().is(NEEDS_GOLDEN_TOOL));
+        LOGGER.info("DISSOLVED_STONE_BLOCK in mineable/pickaxe: {}", DISSOLVED_STONE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+    }
 }
