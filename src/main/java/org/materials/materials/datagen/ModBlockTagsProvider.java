@@ -12,6 +12,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagsProvider extends BlockTagsProvider
 {
+
     public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper)
     {
         super(output, lookupProvider, Materials.MODID, existingFileHelper);
@@ -20,6 +21,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider
     @Override
     protected void addTags(@javax.annotation.Nonnull HolderLookup.Provider provider)
     {
+        // 条件性添加标签
+        if (EnrollBlocks.FIREFLY_BUSH != null)
+        {
+            tag(Materials.MINEABLE_WITH_SHEARS)
+                    .add(EnrollBlocks.FIREFLY_BUSH.get());
+        }
+
         // 斧头开采
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(EnrollBlocks.EXP_BLOCK.get())

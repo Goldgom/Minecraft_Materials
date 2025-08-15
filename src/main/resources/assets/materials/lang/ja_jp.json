@@ -30,5 +30,7 @@
     "block.materials.dissolved_stone": "溶かされた石",
     "block.materials.dissolved_stone.tooltip": "カルスト地形の石は、長い間流水の浸食を受けて脆弱になっている。",
     "block.materials.imitation_bedrock": "模造された基岩",
-    "block.materials.imitation_bedrock.tooltip": "基岩の硬度ゆえに、模倣しようとする者が常にいる。\n「待って、この模造のベースロックの爆発耐性が弱すぎるよ……」\n「爆発に対する耐性は我々の考慮範囲内にはない。」"
+    "block.materials.imitation_bedrock.tooltip": "基岩の硬度ゆえに、模倣しようとする者が常にいる。\n「待って、この模造のベースロックの爆発耐性が弱すぎるよ……」\n「爆発に対する耐性は我々の考慮範囲内にはない。」",
+    "block.materials.firefly_bush": "ホタルの生る灌木",
+    "block.materials.firefly_bush.tooltip": "蛍がいる灌木。"
 }

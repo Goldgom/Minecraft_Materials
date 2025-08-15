@@ -8,6 +8,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import org.jetbrains.annotations.NotNull;
 import org.materials.materials.EnrollBlocks;
 import org.materials.materials.Materials;
 
@@ -28,8 +29,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput output)
+    protected void buildRecipes(@NotNull RecipeOutput output)
     {
+        net.minecraft.world.level.ItemLike fireflyBush;
+        if (EnrollBlocks.FIREFLY_BUSH != null)
+            fireflyBush = EnrollBlocks.FIREFLY_BUSH_ITEM.get();
+        else
+            fireflyBush = null;
+
+        if (fireflyBush != null)
+        {
+            // 无序合成配方 - 荧石粉 (用萤火虫灌木丛制作)
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Items.GLOWSTONE_DUST, 4)
+                    .requires(fireflyBush, 2)
+                    .unlockedBy(getHasName(fireflyBush), has(fireflyBush))
+                    .save(output, ResourceLocation.fromNamespaceAndPath(Materials.MODID, "firefly_bush_to_glowstone_dust"));
+        }
+
         // 有序合成配方 - 脆弱木板 (用普通木板制作)
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, EnrollBlocks.FRAGILE_PLANK_BLOCK_ITEM.get(), 4)
                 .pattern("W ")

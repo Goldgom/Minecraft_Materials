@@ -44,6 +44,12 @@ public class ModBlockLootProvider extends BlockLootSubProvider
         dropSelf(EnrollBlocks.REINFORCED_ANDESITE_BLOCK.get());
         dropSelf(EnrollBlocks.DISSOLVED_STONE_BLOCK.get());
         dropSelf(EnrollBlocks.IMITATION_BEDROCK_BLOCK.get());
+        // 条件性添加萤火虫灌木掉落表
+        if (EnrollBlocks.FIREFLY_BUSH != null)
+        {
+            add(EnrollBlocks.FIREFLY_BUSH.get(),
+                    createShearsOnlyDrop(EnrollBlocks.FIREFLY_BUSH.get()));
+        }
     }
 
     @Override

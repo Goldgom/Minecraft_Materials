@@ -30,5 +30,7 @@
     "block.materials.dissolved_stone": "溶蝕石頭",
     "block.materials.dissolved_stone.tooltip": "來自喀斯特地貌的石頭，因長時間受到流水侵蝕而變得脆弱不堪。",
     "block.materials.imitation_bedrock": "仿製基岩",
-    "block.materials.imitation_bedrock.tooltip": "總有一些人想要仿製基岩，因為它的硬度。\n「等等，這仿製基岩的爆炸抗性也太弱了……」\n「爆炸抗性並不在我們的考慮範圍之內。」"
+    "block.materials.imitation_bedrock.tooltip": "總有一些人想要仿製基岩，因為它的硬度。\n「等等，這仿製基岩的爆炸抗性也太弱了……」\n「爆炸抗性並不在我們的考慮範圍之內。」",
+    "block.materials.firefly_bush": "螢火蟲灌木叢",
+    "block.materials.firefly_bush.tooltip": "一種帶有螢火蟲的灌木叢。"
 }

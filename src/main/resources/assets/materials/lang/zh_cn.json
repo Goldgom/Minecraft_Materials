@@ -30,5 +30,7 @@
     "block.materials.dissolved_stone": "溶蚀石头",
     "block.materials.dissolved_stone.tooltip": "来自喀斯特地貌的石头，因长时间受到流水侵蚀而变得脆弱不堪。",
     "block.materials.imitation_bedrock": "仿制基岩",
-    "block.materials.imitation_bedrock.tooltip": "总有一些人想要仿制基岩，因为它的硬度。\n“等等，这仿制基岩的爆炸抗性也太弱了……”\n“爆炸抗性并不在我们的考虑范围之内。”"
+    "block.materials.imitation_bedrock.tooltip": "总有一些人想要仿制基岩，因为它的硬度。\n“等等，这仿制基岩的爆炸抗性也太弱了……”\n“爆炸抗性并不在我们的考虑范围之内。”",
+    "block.materials.firefly_bush": "萤火虫灌木丛",
+    "block.materials.firefly_bush.tooltip": "一种带有萤火虫的灌木丛。"
 }

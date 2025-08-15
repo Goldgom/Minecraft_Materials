@@ -3,9 +3,8 @@ package org.materials.materials;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-
+//import net.minecraft.resources.ResourceKey;
+//import net.minecraft.resources.ResourceLocation;
 import javax.annotation.Nonnull;
 //import net.minecraft.world.food.FoodProperties;
 import net.minecraft.tags.BlockTags;
@@ -19,6 +18,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.registries.*;
 
 import static org.materials.materials.Materials.*;
@@ -28,9 +28,6 @@ public class EnrollBlocks
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
-
-    // 便于在事件中比较的创造标签 Key
-    public static final ResourceKey<CreativeModeTab> MATERIALS_TAB_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(MODID, "example_tab"));
 
     // Blocks
     public static final DeferredBlock<Block> EXP_BLOCK = BLOCKS.register("exp", () ->
@@ -290,6 +287,16 @@ public class EnrollBlocks
                     .lightLevel((state) -> 0)
             )
     );
+    // 条件性注册萤火虫灌木
+    public static final DeferredBlock<FireflyBushBlock> FIREFLY_BUSH = shouldRegisterFireflyBush()
+            ? BLOCKS.register("firefly_bush", () ->
+            new FireflyBushBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .noCollission()
+                    .instabreak()
+                    .sound(SoundType.GRASS)
+                    .lightLevel((state) -> 7)))
+            : null;
 
     // Items
     public static final DeferredItem<Item> EXP_BLOCK_ITEM = ITEMS.register("exp", () ->
@@ -364,6 +371,10 @@ public class EnrollBlocks
     public static final DeferredItem<Item> IMITATION_BEDROCK_BLOCK_ITEM = ITEMS.register("imitation_bedrock", () ->
             new TipsBlockItem(IMITATION_BEDROCK_BLOCK.get(), new Item.Properties(), "block.materials.imitation_bedrock.tooltip")
     );
+    public static final DeferredItem<Item> FIREFLY_BUSH_ITEM = FIREFLY_BUSH != null
+            ? ITEMS.register("firefly_bush", () ->
+            new TipsBlockItem(FIREFLY_BUSH.get(), new Item.Properties(), "block.materials.firefly_bush.tooltip"))
+            : null;
 
 //    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () ->
 //            new Item(new Item.Properties().food(new FoodProperties.Builder()
@@ -401,6 +412,11 @@ public class EnrollBlocks
                         output.accept(REINFORCED_ANDESITE_BLOCK_ITEM.get());
                         output.accept(DISSOLVED_STONE_BLOCK_ITEM.get());
                         output.accept(IMITATION_BEDROCK_BLOCK_ITEM.get());
+                        // 条件性添加萤火虫灌木
+                        if (FIREFLY_BUSH_ITEM != null)
+                        {
+                            output.accept(FIREFLY_BUSH_ITEM.get());
+                        }
                     })
                     .build());
 
@@ -455,5 +471,31 @@ public class EnrollBlocks
         LOGGER.info("REINFORCED_ANDESITE_BLOCK in mineable/pickaxe: {}", REINFORCED_ANDESITE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
         LOGGER.info("REINFORCED_ANDESITE_BLOCK in needs_golden_tool: {}", REINFORCED_ANDESITE_BLOCK.get().defaultBlockState().is(NEEDS_GOLDEN_TOOL));
         LOGGER.info("DISSOLVED_STONE_BLOCK in mineable/pickaxe: {}", DISSOLVED_STONE_BLOCK.get().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE));
+        if (FIREFLY_BUSH != null)
+        {
+            LOGGER.info("FIREFLY_BUSH in mineable/shears: {}", FIREFLY_BUSH.get().defaultBlockState().is(MINEABLE_WITH_SHEARS));
+        }
+    }
+
+    private static boolean shouldRegisterFireflyBush()
+    {
+        // 检测 Minecraft 版本，1.21.5+ 不注册自定义萤火虫灌木
+        String mcVersion = FMLLoader.versionInfo().mcVersion();
+        String[] versionParts = mcVersion.split("\\.");
+
+        if (versionParts.length >= 3)
+        {
+            int major = Integer.parseInt(versionParts[0]);
+            int minor = Integer.parseInt(versionParts[1]);
+            int patch = Integer.parseInt(versionParts[2]);
+
+            // 1.21.5 及以后版本返回 false
+            if (major > 1 || (major == 1 && minor > 21) ||
+                    (major == 1 && minor == 21 && patch >= 5))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

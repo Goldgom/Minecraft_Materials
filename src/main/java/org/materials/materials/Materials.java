@@ -36,6 +36,7 @@ public class Materials
     // 注册方块的注册表
     public static final TagKey<Block> NEEDS_GOLDEN_TOOL = BlockTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "needs_golden_tool"));
     public static final TagKey<Block> NEEDS_NETHERITE_TOOL = BlockTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "needs_netherite_tool"));
+    public static final TagKey<Block> MINEABLE_WITH_SHEARS = BlockTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "mineable/shears"));
 
     public Materials(IEventBus modEventBus, ModContainer modContainer)
     {
@@ -147,8 +148,12 @@ public class Materials
                 ItemBlockRenderTypes.setRenderLayer(EnrollBlocks.BORDERLESS_GLASS_BLOCK.get(), RenderType.translucent());
                 ItemBlockRenderTypes.setRenderLayer(EnrollBlocks.HIGH_STRENGTH_GLASS_BLOCK.get(), RenderType.translucent());
                 ItemBlockRenderTypes.setRenderLayer(EnrollBlocks.SIX_PHASE_ICE_BLOCK.get(), RenderType.translucent());
+                // 条件性设置萤火虫灌木渲染层
+                if (EnrollBlocks.FIREFLY_BUSH != null)
+                {
+                    ItemBlockRenderTypes.setRenderLayer(EnrollBlocks.FIREFLY_BUSH.get(), RenderType.cutout());
+                }
             });
         }
-
     }
 }

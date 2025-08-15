@@ -30,5 +30,7 @@
     "block.materials.dissolved_stone": "돌을 녹입니다",
     "block.materials.dissolved_stone.tooltip": "카르스트 지형의 돌이 오랜 시간 동안 물의 침식을 받아 매우 연약해졌다.",
     "block.materials.imitation_bedrock": "모조 바닥암",
-    "block.materials.imitation_bedrock.tooltip": "어떤 사람들은 기암의 경도 때문에 그것을 모방하고 싶어한다.\n\"잠깐, 이 모조 암벽의 폭발 저항력이 너무 약하지…\"\n폭발 저항성은 우리의 고려 범위에 포함되지 않습니다."
+    "block.materials.imitation_bedrock.tooltip": "어떤 사람들은 기암의 경도 때문에 그것을 모방하고 싶어한다.\n\"잠깐, 이 모조 암벽의 폭발 저항력이 너무 약하지…\"\n폭발 저항성은 우리의 고려 범위에 포함되지 않습니다.",
+    "block.materials.firefly_bush": "불벌레 덤불",
+    "block.materials.firefly_bush.tooltip": "반딧불이가 있는 덤불."
 }
