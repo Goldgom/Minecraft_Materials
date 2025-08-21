@@ -2,5 +2,5 @@
   "type": "forge:add_features",
   "biomes": "#minecraft:is_overworld",
   "features": "materials:dissolved_stone",
-  "step": "underground_ores"
+  "step": "underground_decoration"
 }

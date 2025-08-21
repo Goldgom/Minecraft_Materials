@@ -19,6 +19,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 import static org.materials.materials.Materials.*;
 
@@ -38,6 +41,18 @@ public class EnrollBlocks
                     .lightLevel((state) -> 15) // 设置方块的光照等级
             )
     );
+
+    // 注册名为 萤火虫灌木丛 的方块，采用植物颜色的默认属性
+    public static final RegistryObject<Block> FIREFLY_BUSH = BLOCKS.register("firefly_bush", () ->
+            new FireflyBushBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT) // 设置方块的颜色为植物颜色
+                    .noCollission() // 设置方块不会阻塞碰撞
+                    .instabreak() // 设置方块可以瞬间破坏
+                    .sound(SoundType.GRASS) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 7) // 设置方块的光照等级
+            )
+    );
+
     // 注册名为 脆弱木板 的方块，采用木头颜色的默认属性
     public static final RegistryObject<Block> FRAGILE_PLANK_BLOCK = BLOCKS.register("fragile_plank", () ->
             new Block(BlockBehaviour.Properties.of()
@@ -237,7 +252,10 @@ public class EnrollBlocks
             )
             {
                 @Override
-                public void stepOn(net.minecraft.world.level.Level level, net.minecraft.core.BlockPos pos, net.minecraft.world.level.block.state.BlockState state, net.minecraft.world.entity.Entity entity)
+                public void stepOn(net.minecraft.world.level.@NotNull Level level,
+                                   net.minecraft.core.@NotNull BlockPos pos,
+                                   net.minecraft.world.level.block.state.@NotNull BlockState state,
+                                   net.minecraft.world.entity.@NotNull Entity entity)
                 {
                     super.stepOn(level, pos, state, entity);
                     if (!level.isClientSide && entity instanceof net.minecraft.world.entity.LivingEntity)
@@ -259,6 +277,9 @@ public class EnrollBlocks
 
     public static final RegistryObject<Item> EXP_BLOCK_ITEM = ITEMS.register("exp", () ->
             new BlockItem(EXP_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> FIREFLY_BUSH_ITEM = ITEMS.register("firefly_bush", () ->
+            new TipsBlockItem(FIREFLY_BUSH.get(), new Item.Properties(), "block.materials.firefly_bush.tooltip")
     );
     public static final RegistryObject<Item> FRAGILE_PLANK_BLOCK_ITEM = ITEMS.register("fragile_plank", () ->
             new TipsBlockItem(FRAGILE_PLANK_BLOCK.get(), new Item.Properties(), "block.materials.fragile_plank.tooltip")
@@ -343,6 +364,7 @@ public class EnrollBlocks
                     {
                         output.accept(EXAMPLE_ITEM.get());
                         output.accept(EXP_BLOCK_ITEM.get());
+                        output.accept(FIREFLY_BUSH_ITEM.get());
                         output.accept(FRAGILE_PLANK_BLOCK_ITEM.get());
                         output.accept(REINFORCED_PLANK_BLOCK_ITEM.get());
                         output.accept(REINFORCED_SMOOTH_STONE_BLOCK_ITEM.get());
@@ -372,53 +394,55 @@ public class EnrollBlocks
     static void commonSetup(final FMLCommonSetupEvent event)
     {
         LOGGER.info("HELLO FROM COMMON SETUP");
+        LOGGER.info("FMLCommonSetupEvent event: {}", event.toString());
 
         if (Config.logDirtBlock)
             LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
+        LOGGER.info("{}{}", Config.magicNumberIntroduction, Config.magicNumber);
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
 
-        LOGGER.info("EXP_BLOCK in mineable/axe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_AXE).contains(EXP_BLOCK.get()));
-        LOGGER.info("EXP_BLOCK in needs_iron_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.NEEDS_IRON_TOOL).contains(EXP_BLOCK.get()));
-        LOGGER.info("FRAGILE_PLANK_BLOCK in mineable/axe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_AXE).contains(FRAGILE_PLANK_BLOCK.get()));
-        LOGGER.info("REINFORCED_PLANK_BLOCK in mineable/axe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_AXE).contains(REINFORCED_PLANK_BLOCK.get()));
-        LOGGER.info("REINFORCED_PLANK_BLOCK in needs_golden_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_PLANK_BLOCK.get()));
-        LOGGER.info("REINFORCED_SMOOTH_STONE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_SMOOTH_STONE_BLOCK.get()));
-        LOGGER.info("REINFORCED_SMOOTH_STONE_BLOCK in needs_iron_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_SMOOTH_STONE_BLOCK.get()));
-        LOGGER.info("FRAGILE_SMOOTH_STONE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(FRAGILE_SMOOTH_STONE_BLOCK.get()));
-        LOGGER.info("BORDERLESS_GLASS_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(BORDERLESS_GLASS_BLOCK.get()));
-        LOGGER.info("BORDERLESS_GLASS_BLOCK in needs_golden_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_GOLDEN_TOOL).contains(BORDERLESS_GLASS_BLOCK.get()));
-        LOGGER.info("HIGH_STRENGTH_GLASS_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(HIGH_STRENGTH_GLASS_BLOCK.get()));
-        LOGGER.info("HIGH_STRENGTH_GLASS_BLOCK in needs_netherite_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_NETHERITE_TOOL).contains(HIGH_STRENGTH_GLASS_BLOCK.get()));
-        LOGGER.info("SIX_PHASE_ICE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(SIX_PHASE_ICE_BLOCK.get()));
-        LOGGER.info("SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK.get()));
-        LOGGER.info("SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK in needs_netherite_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_NETHERITE_TOOL).contains(SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK.get()));
-        LOGGER.info("FRAGILE_DEEPSLATE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(FRAGILE_DEEPSLATE_BLOCK.get()));
-        LOGGER.info("FRAGILE_DEEPSLATE_BLOCK in needs_stone_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.NEEDS_STONE_TOOL).contains(FRAGILE_DEEPSLATE_BLOCK.get()));
-        LOGGER.info("REINFORCED_SANDSTONE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_SANDSTONE_BLOCK.get()));
-        LOGGER.info("REINFORCED_SANDSTONE_BLOCK in needs_stone_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.NEEDS_STONE_TOOL).contains(REINFORCED_SANDSTONE_BLOCK.get()));
-        LOGGER.info("REINFORCED_RED_SANDSTONE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_RED_SANDSTONE_BLOCK.get()));
-        LOGGER.info("REINFORCED_RED_SANDSTONE_BLOCK in needs_stone_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.NEEDS_STONE_TOOL).contains(REINFORCED_RED_SANDSTONE_BLOCK.get()));
-        LOGGER.info("REINFORCED_TUFF_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_TUFF_BLOCK.get()));
-        LOGGER.info("REINFORCED_TUFF_BLOCK in needs_golden_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_TUFF_BLOCK.get()));
-        LOGGER.info("REINFORCED_NETHERRACK_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_NETHERRACK_BLOCK.get()));
-        LOGGER.info("REINFORCED_NETHERRACK_BLOCK in needs_golden_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_NETHERRACK_BLOCK.get()));
-        LOGGER.info("REINFORCED_BASALT_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_BASALT_BLOCK.get()));
-        LOGGER.info("REINFORCED_BASALT_BLOCK in needs_golden_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_BASALT_BLOCK.get()));
-        LOGGER.info("REINFORCED_BLACKSTONE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_BLACKSTONE_BLOCK.get()));
-        LOGGER.info("REINFORCED_BLACKSTONE_BLOCK in needs_golden_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_BLACKSTONE_BLOCK.get()));
-        LOGGER.info("FRAGILE_END_STONE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(FRAGILE_END_STONE_BLOCK.get()));
-        LOGGER.info("REINFORCED_END_STONE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_END_STONE_BLOCK.get()));
-        LOGGER.info("REINFORCED_END_STONE_BLOCK in needs_diamond_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.NEEDS_DIAMOND_TOOL).contains(REINFORCED_END_STONE_BLOCK.get()));
-        LOGGER.info("SYNTHETIC_OBSIDIAN_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(SYNTHETIC_OBSIDIAN_BLOCK.get()));
-        LOGGER.info("SYNTHETIC_OBSIDIAN_BLOCK in needs_netherite_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_NETHERITE_TOOL).contains(SYNTHETIC_OBSIDIAN_BLOCK.get()));
-        LOGGER.info("REINFORCED_GRANITE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_GRANITE_BLOCK.get()));
-        LOGGER.info("REINFORCED_GRANITE_BLOCK in needs_golden_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_GRANITE_BLOCK.get()));
-        LOGGER.info("REINFORCED_DIORITE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_DIORITE_BLOCK.get()));
-        LOGGER.info("REINFORCED_DIORITE_BLOCK in needs_golden_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_DIORITE_BLOCK.get()));
-        LOGGER.info("REINFORCED_ANDESITE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_ANDESITE_BLOCK.get()));
-        LOGGER.info("REINFORCED_ANDESITE_BLOCK in needs_golden_tool: {}", ForgeRegistries.BLOCKS.tags().getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_ANDESITE_BLOCK.get()));
-        LOGGER.info("DISSOLVED_STONE_BLOCK in mineable/pickaxe: {}", ForgeRegistries.BLOCKS.tags().getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(DISSOLVED_STONE_BLOCK.get()));
+        LOGGER.info("EXP_BLOCK in mineable/axe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_AXE).contains(EXP_BLOCK.get()));
+        LOGGER.info("EXP_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(EXP_BLOCK.get()));
+        LOGGER.info("FIREFLY_BUSH in mineable/shears: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(MINEABLE_WITH_SHEARS).contains(FIREFLY_BUSH.get()));
+        LOGGER.info("FRAGILE_PLANK_BLOCK in mineable/axe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_AXE).contains(FRAGILE_PLANK_BLOCK.get()));
+        LOGGER.info("REINFORCED_PLANK_BLOCK in mineable/axe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_AXE).contains(REINFORCED_PLANK_BLOCK.get()));
+        LOGGER.info("REINFORCED_PLANK_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_PLANK_BLOCK.get()));
+        LOGGER.info("REINFORCED_SMOOTH_STONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_SMOOTH_STONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_SMOOTH_STONE_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_SMOOTH_STONE_BLOCK.get()));
+        LOGGER.info("FRAGILE_SMOOTH_STONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(FRAGILE_SMOOTH_STONE_BLOCK.get()));
+        LOGGER.info("BORDERLESS_GLASS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(BORDERLESS_GLASS_BLOCK.get()));
+        LOGGER.info("BORDERLESS_GLASS_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(BORDERLESS_GLASS_BLOCK.get()));
+        LOGGER.info("HIGH_STRENGTH_GLASS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(HIGH_STRENGTH_GLASS_BLOCK.get()));
+        LOGGER.info("HIGH_STRENGTH_GLASS_BLOCK in needs_netherite_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_NETHERITE_TOOL).contains(HIGH_STRENGTH_GLASS_BLOCK.get()));
+        LOGGER.info("SIX_PHASE_ICE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(SIX_PHASE_ICE_BLOCK.get()));
+        LOGGER.info("SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK.get()));
+        LOGGER.info("SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK in needs_netherite_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_NETHERITE_TOOL).contains(SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK.get()));
+        LOGGER.info("FRAGILE_DEEPSLATE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(FRAGILE_DEEPSLATE_BLOCK.get()));
+        LOGGER.info("FRAGILE_DEEPSLATE_BLOCK in needs_stone_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_STONE_TOOL).contains(FRAGILE_DEEPSLATE_BLOCK.get()));
+        LOGGER.info("REINFORCED_SANDSTONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_SANDSTONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_SANDSTONE_BLOCK in needs_stone_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_STONE_TOOL).contains(REINFORCED_SANDSTONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_RED_SANDSTONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_RED_SANDSTONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_RED_SANDSTONE_BLOCK in needs_stone_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_STONE_TOOL).contains(REINFORCED_RED_SANDSTONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_TUFF_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_TUFF_BLOCK.get()));
+        LOGGER.info("REINFORCED_TUFF_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_TUFF_BLOCK.get()));
+        LOGGER.info("REINFORCED_NETHERRACK_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_NETHERRACK_BLOCK.get()));
+        LOGGER.info("REINFORCED_NETHERRACK_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_NETHERRACK_BLOCK.get()));
+        LOGGER.info("REINFORCED_BASALT_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_BASALT_BLOCK.get()));
+        LOGGER.info("REINFORCED_BASALT_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_BASALT_BLOCK.get()));
+        LOGGER.info("REINFORCED_BLACKSTONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_BLACKSTONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_BLACKSTONE_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_BLACKSTONE_BLOCK.get()));
+        LOGGER.info("FRAGILE_END_STONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(FRAGILE_END_STONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_END_STONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_END_STONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_END_STONE_BLOCK in needs_diamond_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_DIAMOND_TOOL).contains(REINFORCED_END_STONE_BLOCK.get()));
+        LOGGER.info("SYNTHETIC_OBSIDIAN_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(SYNTHETIC_OBSIDIAN_BLOCK.get()));
+        LOGGER.info("SYNTHETIC_OBSIDIAN_BLOCK in needs_netherite_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_NETHERITE_TOOL).contains(SYNTHETIC_OBSIDIAN_BLOCK.get()));
+        LOGGER.info("REINFORCED_GRANITE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_GRANITE_BLOCK.get()));
+        LOGGER.info("REINFORCED_GRANITE_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_GRANITE_BLOCK.get()));
+        LOGGER.info("REINFORCED_DIORITE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_DIORITE_BLOCK.get()));
+        LOGGER.info("REINFORCED_DIORITE_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_DIORITE_BLOCK.get()));
+        LOGGER.info("REINFORCED_ANDESITE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_ANDESITE_BLOCK.get()));
+        LOGGER.info("REINFORCED_ANDESITE_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_ANDESITE_BLOCK.get()));
+        LOGGER.info("DISSOLVED_STONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(DISSOLVED_STONE_BLOCK.get()));
     }
 
     // 在 BuildCreativeModeTabContentsEvent 事件中添加物品到对应标签
@@ -431,6 +455,8 @@ public class EnrollBlocks
             event.accept(EXAMPLE_ITEM.get());
             // 添加 EXP_BLOCK_ITEM 到MATERIALS_TAB标签
             event.accept(EXP_BLOCK_ITEM.get());
+            // 添加 FIREFLY_BUSH_ITEM 到MATERIALS_TAB标签
+            event.accept(FIREFLY_BUSH_ITEM.get());
             // 添加 FRAGILE_PLANK_BLOCK_ITEM 到MATERIALS_TAB标签
             event.accept(FRAGILE_PLANK_BLOCK_ITEM.get());
             // 添加 REINFORCED_PLANK_BLOCK_ITEM 到MATERIALS_TAB标签

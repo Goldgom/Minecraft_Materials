@@ -14,10 +14,16 @@ public class ModConfiguredFeatures
 {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DISSOLVED_STONE_KEY = registerKey("dissolved_stone");
     public static final ResourceKey<PlacedFeature> DISSOLVED_STONE_PLACED_KEY = registerPlacedKey("dissolved_stone");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FIREFLY_BUSH_KEY = registerKey("firefly_bush");
+    public static final ResourceKey<PlacedFeature> FIREFLY_BUSH_PLACED_KEY = registerPlacedKey("firefly_bush");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SIX_PHASE_ICE_KEY = registerKey("six_phase_ice");
+    public static final ResourceKey<PlacedFeature> SIX_PHASE_ICE_PLACED_KEY = registerPlacedKey("six_phase_ice");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) 
     {
         register(context, DISSOLVED_STONE_KEY, ModFeatures.DISSOLVED_STONE_FEATURE.get(), new NoneFeatureConfiguration());
+        register(context, FIREFLY_BUSH_KEY, ModFeatures.FIREFLY_BUSH_FEATURE.get(), new NoneFeatureConfiguration());
+        register(context, SIX_PHASE_ICE_KEY, ModFeatures.SIX_PHASE_ICE_FEATURE.get(), new NoneFeatureConfiguration());
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) 

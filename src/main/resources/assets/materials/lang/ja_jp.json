@@ -3,6 +3,8 @@
     "More_information": "Altキーを押し続けて詳細情報を表示",
     "item.materials.example_item": "サンプルアイテム（試してみますか？）",
     "block.materials.exp": "EXP",
+    "block.materials.firefly_bush": "ホタルの生る灌木",
+    "block.materials.firefly_bush.tooltip": "蛍がいる灌木。",
     "block.materials.fragile_plank": "脆い板",
     "block.materials.fragile_plank.tooltip": "注意してください！この板は脆く、壊れる可能性があります。",
     "block.materials.reinforced_plank": "強化された板",

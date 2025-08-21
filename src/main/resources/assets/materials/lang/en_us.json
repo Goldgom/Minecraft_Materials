@@ -3,6 +3,8 @@
     "More_information": "Press and hold Alt key for more information",
     "item.materials.example_item": "Example Item (try it out?)",
     "block.materials.exp": "EXP",
+    "block.materials.firefly_bush": "Firefly Bush",
+    "block.materials.firefly_bush.tooltip": "A bush with fireflies. ",
     "block.materials.fragile_plank": "Fragile Plank",
     "block.materials.fragile_plank.tooltip": "Be careful! This plank is fragile and may break.",
     "block.materials.reinforced_plank": "Reinforced Plank",

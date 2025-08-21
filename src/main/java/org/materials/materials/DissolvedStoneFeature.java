@@ -27,15 +27,16 @@ public class DissolvedStoneFeature extends Feature<NoneFeatureConfiguration>
         // 仅在主世界生成
         if (level instanceof net.minecraft.world.level.WorldGenLevel)
         {
-            net.minecraft.world.level.WorldGenLevel worldGenLevel = (net.minecraft.world.level.WorldGenLevel) level;
+            net.minecraft.world.level.WorldGenLevel worldGenLevel = level;
             if (!worldGenLevel.getLevel().dimension().equals(Level.OVERWORLD))
             {
                 return false;
             }
         }
 
-        // 只在y<10生成
-        if (pos.getY() >= 10) return false;
+        // 只在y<64生成
+        if (pos.getY() >= 64)
+            return false;
 
         // 检查周围5x5x5是否有滴水石
         boolean nearDripstone = false;
@@ -54,17 +55,26 @@ public class DissolvedStoneFeature extends Feature<NoneFeatureConfiguration>
                         break;
                     }
                 }
-                if (nearDripstone) break;
+                if (nearDripstone)
+                    break;
             }
-            if (nearDripstone) break;
+            if (nearDripstone)
+                break;
         }
 
-        // 10%概率生成
+        // 在滴水石附近，有10%概率生成
         if (nearDripstone && random.nextFloat() < 0.1f)
         {
-            level.setBlock(pos, EnrollBlocks.DISSOLVED_STONE_BLOCK.get().defaultBlockState(), 2);
-            return true;
+            // 替换当前位置的方块为溶蚀石头
+            if (level.getBlockState(pos).is(Blocks.STONE) ||
+                    level.getBlockState(pos).is(Blocks.COBBLESTONE) ||
+                    level.getBlockState(pos).is(Blocks.DEEPSLATE))
+            {
+                level.setBlock(pos, EnrollBlocks.DISSOLVED_STONE_BLOCK.get().defaultBlockState(), 3);
+                return true;
+            }
         }
+
         return false;
     }
 }

@@ -14,7 +14,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -29,6 +28,7 @@ public class Materials
     // 注册方块的注册表
     public static final TagKey<Block> NEEDS_GOLDEN_TOOL = BlockTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "needs_golden_tool"));
     public static final TagKey<Block> NEEDS_NETHERITE_TOOL = BlockTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "needs_netherite_tool"));
+    public static final TagKey<Block> MINEABLE_WITH_SHEARS = BlockTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "mineable/shears"));
 
     public Materials(FMLJavaModLoadingContext context)
     {
@@ -38,6 +38,7 @@ public class Materials
         EnrollBlocks.BLOCKS.register(modEventBus);
         EnrollBlocks.ITEMS.register(modEventBus);
         EnrollBlocks.CREATIVE_MODE_TABS.register(modEventBus);
+
         ModFeatures.FEATURES.register(modEventBus);
 
         modEventBus.addListener(EnrollBlocks::commonSetup);
@@ -50,18 +51,25 @@ public class Materials
     public void onServerStarting(ServerStartingEvent event)
     {
         LOGGER.info("HELLO from server starting");
+
+        if (net.minecraftforge.fml.ModList.get().isLoaded("extended_blocks"))
+        {
+            // 执行联动代码
+            LOGGER.info("Mod extended_blocks in server is loaded.");
+        }
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
+        @SuppressWarnings({"removal"}) // ItemBlockRenderTypes.setRenderLayer 将在 1.21.4 版本弃用移除，这里抑制警告
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
-            if (net.minecraftforge.fml.ModList.get().isLoaded("extendedblocks"))
+            if (net.minecraftforge.fml.ModList.get().isLoaded("extended_blocks"))
             {
                 // 执行联动代码
                 LOGGER.info("Mod extendedblocks is loaded.");
@@ -72,6 +80,7 @@ public class Materials
                 ItemBlockRenderTypes.setRenderLayer(EnrollBlocks.BORDERLESS_GLASS_BLOCK.get(), RenderType.translucent());
                 ItemBlockRenderTypes.setRenderLayer(EnrollBlocks.HIGH_STRENGTH_GLASS_BLOCK.get(), RenderType.translucent());
                 ItemBlockRenderTypes.setRenderLayer(EnrollBlocks.SIX_PHASE_ICE_BLOCK.get(), RenderType.translucent());
+                ItemBlockRenderTypes.setRenderLayer(EnrollBlocks.FIREFLY_BUSH.get(), RenderType.cutout());
             });
         }
     }

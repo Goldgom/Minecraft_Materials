@@ -6,6 +6,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import org.jetbrains.annotations.NotNull;
 import org.materials.materials.EnrollBlocks;
 import org.materials.materials.Materials;
 
@@ -26,8 +27,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> pWriter)
+    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> pWriter)
     {
+        // 无序合成配方 - 荧石粉
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Items.GLOWSTONE_DUST, 4)
+                .requires(EnrollBlocks.FIREFLY_BUSH_ITEM.get(), 2)
+                .unlockedBy(getHasName(EnrollBlocks.FIREFLY_BUSH_ITEM.get()), has(EnrollBlocks.FIREFLY_BUSH_ITEM.get()))
+                .save(pWriter, Materials.MODID + ":glowstone_dust_from_firefly_bush");
         // 有序合成配方 - 脆弱木板 (用普通木板制作)
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, EnrollBlocks.FRAGILE_PLANK_BLOCK_ITEM.get(), 4)
                 .pattern("W ")

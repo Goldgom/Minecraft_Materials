@@ -3,6 +3,8 @@
     "More_information": "按住 Alt 鍵以獲取更多信息",
     "item.materials.example_item": "範例物品（試試看？）",
     "block.materials.exp": "EXP",
+    "block.materials.firefly_bush": "螢火蟲灌木叢",
+    "block.materials.firefly_bush.tooltip": "一種帶有螢火蟲的灌木叢。",
     "block.materials.fragile_plank": "脆弱木板",
     "block.materials.fragile_plank.tooltip": "小心！這塊木板很脆弱，可能會碎裂。",
     "block.materials.reinforced_plank": "強化木板",

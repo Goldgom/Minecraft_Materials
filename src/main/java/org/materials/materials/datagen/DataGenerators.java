@@ -22,6 +22,10 @@ public class DataGenerators
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
+        // 方块标签
+        generator.addProvider(event.includeServer(), new ModBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
+
+        // 世界生成与配方
         generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
     }

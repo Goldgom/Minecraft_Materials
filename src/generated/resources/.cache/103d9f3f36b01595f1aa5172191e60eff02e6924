@@ -1,4 +1,10 @@
-// 1.20.1	2025-08-06T22:17:38.0610073	Registries
-56120523be47b25827f5a4bf472c2b26de4267d4 data/materials/forge/biome_modifier/add_dissolved_stone.json
+// 1.20.1	2025-08-20T21:07:55.8903512	Registries
+559ed168789a8ad6d41181febbd4d8113e41368c data/materials/forge/biome_modifier/add_dissolved_stone.json
+2fc0f48fe9b15cb924b2351d2ee4ba0903dca552 data/materials/forge/biome_modifier/add_firefly_bush.json
+b4468ca82282bcf8473d93f6d95979127625951e data/materials/forge/biome_modifier/add_six_phase_ice.json
 6c1cb2d132d43048ca73eccd395a83e7ac054af2 data/materials/worldgen/configured_feature/dissolved_stone.json
-2363b10bd5c211a6d9bbd89ddcb8e47ed116c228 data/materials/worldgen/placed_feature/dissolved_stone.json
+2a44db1987c3cb0270f53ad1de63940dc9e6af9f data/materials/worldgen/configured_feature/firefly_bush.json
+4fedf4225feee5846157f35b4d682404da6b8e93 data/materials/worldgen/configured_feature/six_phase_ice.json
+3cf4b6f0775d762d3bfa339215c03cfae1a5ef87 data/materials/worldgen/placed_feature/dissolved_stone.json
+7f62e899df07b24d0ea37383c0ee0cc761e13d26 data/materials/worldgen/placed_feature/firefly_bush.json
+b4da82d335e3b96faa633c26c3893b2cabb5df77 data/materials/worldgen/placed_feature/six_phase_ice.json
