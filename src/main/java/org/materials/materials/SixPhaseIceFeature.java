@@ -15,8 +15,7 @@ public class SixPhaseIceFeature extends Feature<NoneFeatureConfiguration>
 {
     static int radius = 8;     // 水平半径
     static int vRadius = 4;    // 垂直半径
-    static int attempts = 32;  // 采样次数
-    static float triggerChance = 0.02f; // 2%
+    static float triggerChance = 0.08f; // 8%
 
     public SixPhaseIceFeature(Codec<NoneFeatureConfiguration> codec)
     {
@@ -36,27 +35,22 @@ public class SixPhaseIceFeature extends Feature<NoneFeatureConfiguration>
 
         int placed = 0;
 
-        for (int i = 0; i < attempts; i++)
+        int x = origin.getX() + random.nextInt(radius * 2 + 1) - radius;
+        int y = origin.getY() + random.nextInt(vRadius * 2 + 1) - vRadius;
+        int z = origin.getZ() + random.nextInt(radius * 2 + 1) - radius;
+        BlockPos pos = new BlockPos(x, y, z);
+
+        if (isWithoutWorldBounds(level, pos))
+            return false;
+
+        // 候选点：水面上/水中/冰块(冰山及其内部)
+        if (isInvalidTarget(level, pos))
+            return false;
+
+        // 概率触发生成，并从触发点开始扩散成簇
+        if (random.nextFloat() < triggerChance)
         {
-            int x = origin.getX() + random.nextInt(radius * 2 + 1) - radius;
-            int y = origin.getY() + random.nextInt(vRadius * 2 + 1) - vRadius;
-            int z = origin.getZ() + random.nextInt(radius * 2 + 1) - radius;
-            BlockPos pos = new BlockPos(x, y, z);
-
-            if (isWithoutWorldBounds(level, pos))
-                continue;
-            if (!level.getBiome(pos).value().coldEnoughToSnow(pos))
-                continue;
-
-            // 候选点：水面上/水中/冰块(冰山及其内部)
-            if (isInvalidTarget(level, pos))
-                continue;
-
-            // 2% 概率触发生成，并从触发点开始扩散成簇
-            if (random.nextFloat() < triggerChance)
-            {
-                placed += placeCluster(level, pos, random);
-            }
+            placed += placeCluster(level, pos, random);
         }
 
         return placed > 0;

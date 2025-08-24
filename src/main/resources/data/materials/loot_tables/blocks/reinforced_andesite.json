@@ -13,6 +13,7 @@
                 {
                     "condition": "minecraft:match_tool",
                     "predicate": {
+                        "tag": "minecraft:pickaxes",
                         "enchantments": [],
                         "items": [
                             "minecraft:golden_pickaxe",

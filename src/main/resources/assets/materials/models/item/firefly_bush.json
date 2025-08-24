@@ -1,3 +1,6 @@
 {
-    "parent": "materials:block/firefly_bush"
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "materials:block/firefly_bush"
+    }
 }

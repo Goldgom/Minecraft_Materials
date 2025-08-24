@@ -62,13 +62,16 @@ public class DissolvedStoneFeature extends Feature<NoneFeatureConfiguration>
                 break;
         }
 
-        // 在滴水石附近，有10%概率生成
-        if (nearDripstone && random.nextFloat() < 0.1f)
+        // 在滴水石附近，有5%概率生成
+        if (nearDripstone && random.nextFloat() < 0.05f)
         {
             // 替换当前位置的方块为溶蚀石头
             if (level.getBlockState(pos).is(Blocks.STONE) ||
-                    level.getBlockState(pos).is(Blocks.COBBLESTONE) ||
-                    level.getBlockState(pos).is(Blocks.DEEPSLATE))
+                    level.getBlockState(pos).is(Blocks.COBBLESTONE) || level.getBlockState(pos).is(Blocks.DEEPSLATE) ||
+                    level.getBlockState(pos).is(Blocks.GRANITE) || level.getBlockState(pos).is(Blocks.DIORITE) ||
+                    level.getBlockState(pos).is(Blocks.ANDESITE) || level.getBlockState(pos).is(Blocks.TUFF) ||
+                    level.getBlockState(pos).is(Blocks.BLACKSTONE) || level.getBlockState(pos).is(Blocks.BASALT) ||
+                    level.getBlockState(pos).is(Blocks.DRIPSTONE_BLOCK))
             {
                 level.setBlock(pos, EnrollBlocks.DISSOLVED_STONE_BLOCK.get().defaultBlockState(), 3);
                 return true;

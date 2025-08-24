@@ -21,7 +21,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 import static org.materials.materials.Materials.*;
 
@@ -30,6 +33,8 @@ public class EnrollBlocks
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+
+    static final List<Consumer<BuildCreativeModeTabContentsEvent>> externalHandlers = new ArrayList<>();
 
     // 注册名为 示例方块 的方块，采用石头颜色的默认属性
     public static final RegistryObject<Block> EXP_BLOCK = BLOCKS.register("exp", () ->
@@ -87,6 +92,26 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(10.0f, 60.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化石砖 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_STONE_BRICKS_BLOCK = BLOCKS.register("reinforced_stone_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(16.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化雕刻石砖 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_CHISELED_STONE_BRICKS_BLOCK = BLOCKS.register("reinforced_chiseled_stone_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(16.0f, 72.0f) // 设置方块的硬度和爆炸抗性
                     .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
@@ -170,6 +195,33 @@ public class EnrollBlocks
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化下界砖块 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_NETHER_BRICKS_BLOCK = BLOCKS.register("reinforced_nether_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.NETHER) // 设置方块的颜色为下界颜色
+                    .strength(10.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.NETHER_BRICKS) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化雕琢下界砖块 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_CHISELED_NETHER_BRICKS_BLOCK = BLOCKS.register("reinforced_chiseled_nether_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.NETHER) // 设置方块的颜色为下界颜色
+                    .strength(10.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.NETHER_BRICKS) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化红色下界砖块 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_RED_NETHER_BRICKS_BLOCK = BLOCKS.register("reinforced_red_nether_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.NETHER) // 设置方块的颜色为下界颜色
+                    .strength(10.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.NETHER_BRICKS) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
     // 注册名为 强化玄武岩 的方块，采用石头颜色的默认属性
     public static final RegistryObject<Block> REINFORCED_BASALT_BLOCK = BLOCKS.register("reinforced_basalt", () ->
             new Block(BlockBehaviour.Properties.of()
@@ -179,8 +231,26 @@ public class EnrollBlocks
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化平滑玄武岩 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_SMOOTH_BASALT_BLOCK = BLOCKS.register("reinforced_smooth_basalt", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(10.0f, 64.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.BASALT) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
     // 注册名为 强化黑石 的方块，采用石头颜色的默认属性
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_BLOCK = BLOCKS.register("reinforced_blackstone", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化抛光黑石砖 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK = BLOCKS.register("reinforced_polished_blackstone_bricks", () ->
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
@@ -199,6 +269,15 @@ public class EnrollBlocks
     );
     // 注册名为 强化末地石 的方块，采用末地石颜色的默认属性
     public static final RegistryObject<Block> REINFORCED_END_STONE_BLOCK = BLOCKS.register("reinforced_end_stone", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.SAND) // 设置方块的颜色为沙子颜色
+                    .strength(45.0f, 64.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化末地石砖 的方块，采用末地石颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_END_STONE_BRICKS_BLOCK = BLOCKS.register("reinforced_end_stone_bricks", () ->
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.SAND) // 设置方块的颜色为沙子颜色
                     .strength(45.0f, 64.0f) // 设置方块的硬度和爆炸抗性
@@ -239,6 +318,132 @@ public class EnrollBlocks
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化方解石 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_CALCITE_BLOCK = BLOCKS.register("reinforced_calcite", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化红砖块 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_RED_BRICKS_BLOCK = BLOCKS.register("reinforced_red_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化海晶石 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_PRISMARINE_BLOCK = BLOCKS.register("reinforced_prismarine", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化海晶石砖 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_PRISMARINE_BRICKS_BLOCK = BLOCKS.register("reinforced_prismarine_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化暗海晶石 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_DARK_PRISMARINE_BLOCK = BLOCKS.register("reinforced_dark_prismarine", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 99.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化石英块 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_QUARTZ_BLOCK = BLOCKS.register("reinforced_quartz_block", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化雕刻石英块 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_CHISELED_QUARTZ_BLOCK = BLOCKS.register("reinforced_chiseled_quartz", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化石英砖块 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_QUARTZ_BRICKS_BLOCK = BLOCKS.register("reinforced_quartz_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化石英柱 的方块，采用石头颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_QUARTZ_PILLAR_BLOCK = BLOCKS.register("reinforced_quartz_pillar", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化紫水晶块 的方块，采用紫色颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_AMETHYST_BLOCK = BLOCKS.register("reinforced_amethyst_block", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE) // 设置方块的颜色为紫色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.AMETHYST) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 5) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化紫珀块 的方块，采用紫色颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_PURPUR_BLOCK = BLOCKS.register("reinforced_purpur_block", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE) // 设置方块的颜色为紫色
+                    .strength(6.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.AMETHYST) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化紫珀柱 的方块，采用紫色颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_PURPUR_PILLAR_BLOCK = BLOCKS.register("reinforced_purpur_pillar", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE) // 设置方块的颜色为紫色
+                    .strength(6.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.AMETHYST) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 压缩泥坯 的方块，采用泥土颜色的默认属性
+    public static final RegistryObject<Block> COMPRESSED_PACKED_MUD_BLOCK = BLOCKS.register("compressed_packed_mud", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIRT) // 设置方块的颜色为泥土颜色
+                    .strength(4.0f, 4.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.GRAVEL) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化泥砖 的方块，采用泥土颜色的默认属性
+    public static final RegistryObject<Block> REINFORCED_MUD_BRICKS_BLOCK = BLOCKS.register("reinforced_mud_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIRT) // 设置方块的颜色为泥土颜色
+                    .strength(10.0f, 32.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.GRAVEL) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
@@ -293,6 +498,12 @@ public class EnrollBlocks
     public static final RegistryObject<Item> FRAGILE_SMOOTH_STONE_BLOCK_ITEM = ITEMS.register("fragile_smooth_stone", () ->
             new BlockItem(FRAGILE_SMOOTH_STONE_BLOCK.get(), new Item.Properties())
     );
+    public static final RegistryObject<Item> REINFORCED_STONE_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_stone_bricks", () ->
+            new BlockItem(REINFORCED_STONE_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_CHISELED_STONE_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_chiseled_stone_bricks", () ->
+            new BlockItem(REINFORCED_CHISELED_STONE_BRICKS_BLOCK.get(), new Item.Properties())
+    );
     public static final RegistryObject<Item> BORDERLESS_GLASS_BLOCK_ITEM = ITEMS.register("borderless_glass", () ->
             new BlockItem(BORDERLESS_GLASS_BLOCK.get(), new Item.Properties())
     );
@@ -320,17 +531,35 @@ public class EnrollBlocks
     public static final RegistryObject<Item> REINFORCED_NETHERRACK_BLOCK_ITEM = ITEMS.register("reinforced_netherrack", () ->
             new BlockItem(REINFORCED_NETHERRACK_BLOCK.get(), new Item.Properties())
     );
+    public static final RegistryObject<Item> REINFORCED_NETHER_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_nether_bricks", () ->
+            new BlockItem(REINFORCED_NETHER_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_CHISELED_NETHER_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_chiseled_nether_bricks", () ->
+            new BlockItem(REINFORCED_CHISELED_NETHER_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_RED_NETHER_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_red_nether_bricks", () ->
+            new BlockItem(REINFORCED_RED_NETHER_BRICKS_BLOCK.get(), new Item.Properties())
+    );
     public static final RegistryObject<Item> REINFORCED_BASALT_BLOCK_ITEM = ITEMS.register("reinforced_basalt", () ->
             new BlockItem(REINFORCED_BASALT_BLOCK.get(), new Item.Properties())
     );
+    public static final RegistryObject<Item> REINFORCED_SMOOTH_BASALT_BLOCK_ITEM = ITEMS.register("reinforced_smooth_basalt", () ->
+            new BlockItem(REINFORCED_SMOOTH_BASALT_BLOCK.get(), new Item.Properties())
+    );
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_BLOCK_ITEM = ITEMS.register("reinforced_blackstone", () ->
             new BlockItem(REINFORCED_BLACKSTONE_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_polished_blackstone_bricks", () ->
+            new BlockItem(REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK.get(), new Item.Properties())
     );
     public static final RegistryObject<Item> FRAGILE_END_STONE_BLOCK_ITEM = ITEMS.register("fragile_end_stone", () ->
             new BlockItem(FRAGILE_END_STONE_BLOCK.get(), new Item.Properties())
     );
     public static final RegistryObject<Item> REINFORCED_END_STONE_BLOCK_ITEM = ITEMS.register("reinforced_end_stone", () ->
             new BlockItem(REINFORCED_END_STONE_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_END_STONE_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_end_stone_bricks", () ->
+            new BlockItem(REINFORCED_END_STONE_BRICKS_BLOCK.get(), new Item.Properties())
     );
     public static final RegistryObject<Item> SYNTHETIC_OBSIDIAN_BLOCK_ITEM = ITEMS.register("synthetic_obsidian", () ->
             new TipsBlockItem(SYNTHETIC_OBSIDIAN_BLOCK.get(), new Item.Properties(), "block.materials.synthetic_obsidian.tooltip")
@@ -343,6 +572,48 @@ public class EnrollBlocks
     );
     public static final RegistryObject<Item> REINFORCED_ANDESITE_BLOCK_ITEM = ITEMS.register("reinforced_andesite", () ->
             new BlockItem(REINFORCED_ANDESITE_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_CALCITE_BLOCK_ITEM = ITEMS.register("reinforced_calcite", () ->
+            new BlockItem(REINFORCED_CALCITE_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_RED_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_red_bricks", () ->
+            new BlockItem(REINFORCED_RED_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_PRISMARINE_BLOCK_ITEM = ITEMS.register("reinforced_prismarine", () ->
+            new BlockItem(REINFORCED_PRISMARINE_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_PRISMARINE_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_prismarine_bricks", () ->
+            new BlockItem(REINFORCED_PRISMARINE_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_DARK_PRISMARINE_BLOCK_ITEM = ITEMS.register("reinforced_dark_prismarine", () ->
+            new BlockItem(REINFORCED_DARK_PRISMARINE_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_QUARTZ_BLOCK_ITEM = ITEMS.register("reinforced_quartz_block", () ->
+            new BlockItem(REINFORCED_QUARTZ_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_CHISELED_QUARTZ_BLOCK_ITEM = ITEMS.register("reinforced_chiseled_quartz", () ->
+            new BlockItem(REINFORCED_CHISELED_QUARTZ_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_QUARTZ_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_quartz_bricks", () ->
+            new BlockItem(REINFORCED_QUARTZ_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_QUARTZ_PILLAR_BLOCK_ITEM = ITEMS.register("reinforced_quartz_pillar", () ->
+            new BlockItem(REINFORCED_QUARTZ_PILLAR_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_AMETHYST_BLOCK_ITEM = ITEMS.register("reinforced_amethyst_block", () ->
+            new BlockItem(REINFORCED_AMETHYST_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_PURPUR_BLOCK_ITEM = ITEMS.register("reinforced_purpur_block", () ->
+            new BlockItem(REINFORCED_PURPUR_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_PURPUR_PILLAR_BLOCK_ITEM = ITEMS.register("reinforced_purpur_pillar", () ->
+            new BlockItem(REINFORCED_PURPUR_PILLAR_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> COMPRESSED_PACKED_MUD_BLOCK_ITEM = ITEMS.register("compressed_packed_mud", () ->
+            new BlockItem(COMPRESSED_PACKED_MUD_BLOCK.get(), new Item.Properties())
+    );
+    public static final RegistryObject<Item> REINFORCED_MUD_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_mud_bricks", () ->
+            new BlockItem(REINFORCED_MUD_BRICKS_BLOCK.get(), new Item.Properties())
     );
     public static final RegistryObject<Item> DISSOLVED_STONE_BLOCK_ITEM = ITEMS.register("dissolved_stone", () ->
             new TipsBlockItem(DISSOLVED_STONE_BLOCK.get(), new Item.Properties(), "block.materials.dissolved_stone.tooltip")
@@ -362,6 +633,7 @@ public class EnrollBlocks
                     .icon(() -> REINFORCED_SMOOTH_STONE_BLOCK_ITEM.get().getDefaultInstance())
                     .displayItems((parameters, output) ->
                     {
+                        // 添加物品至物品栏中
                         output.accept(EXAMPLE_ITEM.get());
                         output.accept(EXP_BLOCK_ITEM.get());
                         output.accept(FIREFLY_BUSH_ITEM.get());
@@ -369,6 +641,8 @@ public class EnrollBlocks
                         output.accept(REINFORCED_PLANK_BLOCK_ITEM.get());
                         output.accept(REINFORCED_SMOOTH_STONE_BLOCK_ITEM.get());
                         output.accept(FRAGILE_SMOOTH_STONE_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_STONE_BRICKS_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_CHISELED_STONE_BRICKS_BLOCK_ITEM.get());
                         output.accept(BORDERLESS_GLASS_BLOCK_ITEM.get());
                         output.accept(HIGH_STRENGTH_GLASS_BLOCK_ITEM.get());
                         output.accept(SIX_PHASE_ICE_BLOCK_ITEM.get());
@@ -378,14 +652,34 @@ public class EnrollBlocks
                         output.accept(REINFORCED_RED_SANDSTONE_BLOCK_ITEM.get());
                         output.accept(REINFORCED_TUFF_BLOCK_ITEM.get());
                         output.accept(REINFORCED_NETHERRACK_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_NETHER_BRICKS_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_CHISELED_NETHER_BRICKS_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_RED_NETHER_BRICKS_BLOCK_ITEM.get());
                         output.accept(REINFORCED_BASALT_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_SMOOTH_BASALT_BLOCK_ITEM.get());
                         output.accept(REINFORCED_BLACKSTONE_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK_ITEM.get());
                         output.accept(FRAGILE_END_STONE_BLOCK_ITEM.get());
                         output.accept(REINFORCED_END_STONE_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_END_STONE_BRICKS_BLOCK_ITEM.get());
                         output.accept(SYNTHETIC_OBSIDIAN_BLOCK_ITEM.get());
                         output.accept(REINFORCED_GRANITE_BLOCK_ITEM.get());
                         output.accept(REINFORCED_DIORITE_BLOCK_ITEM.get());
                         output.accept(REINFORCED_ANDESITE_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_CALCITE_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_RED_BRICKS_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_PRISMARINE_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_PRISMARINE_BRICKS_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_DARK_PRISMARINE_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_QUARTZ_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_CHISELED_QUARTZ_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_QUARTZ_BRICKS_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_QUARTZ_PILLAR_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_AMETHYST_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_PURPUR_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_PURPUR_PILLAR_BLOCK_ITEM.get());
+                        output.accept(COMPRESSED_PACKED_MUD_BLOCK_ITEM.get());
+                        output.accept(REINFORCED_MUD_BRICKS_BLOCK_ITEM.get());
                         output.accept(DISSOLVED_STONE_BLOCK_ITEM.get());
                         output.accept(IMITATION_BEDROCK_BLOCK_ITEM.get());
                     })
@@ -410,6 +704,10 @@ public class EnrollBlocks
         LOGGER.info("REINFORCED_SMOOTH_STONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_SMOOTH_STONE_BLOCK.get()));
         LOGGER.info("REINFORCED_SMOOTH_STONE_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_SMOOTH_STONE_BLOCK.get()));
         LOGGER.info("FRAGILE_SMOOTH_STONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(FRAGILE_SMOOTH_STONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_STONE_BRICKS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_STONE_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_STONE_BRICKS_BLOCK in needs_diamond_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_DIAMOND_TOOL).contains(REINFORCED_STONE_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_CHISELED_STONE_BRICKS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_CHISELED_STONE_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_CHISELED_STONE_BRICKS_BLOCK in needs_diamond_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_DIAMOND_TOOL).contains(REINFORCED_CHISELED_STONE_BRICKS_BLOCK.get()));
         LOGGER.info("BORDERLESS_GLASS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(BORDERLESS_GLASS_BLOCK.get()));
         LOGGER.info("BORDERLESS_GLASS_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(BORDERLESS_GLASS_BLOCK.get()));
         LOGGER.info("HIGH_STRENGTH_GLASS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(HIGH_STRENGTH_GLASS_BLOCK.get()));
@@ -427,13 +725,25 @@ public class EnrollBlocks
         LOGGER.info("REINFORCED_TUFF_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_TUFF_BLOCK.get()));
         LOGGER.info("REINFORCED_NETHERRACK_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_NETHERRACK_BLOCK.get()));
         LOGGER.info("REINFORCED_NETHERRACK_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_NETHERRACK_BLOCK.get()));
+        LOGGER.info("REINFORCED_NETHER_BRICKS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_NETHER_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_NETHER_BRICKS_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_NETHER_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_CHISELED_NETHER_BRICKS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_CHISELED_NETHER_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_CHISELED_NETHER_BRICKS_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_CHISELED_NETHER_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_RED_NETHER_BRICKS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_RED_NETHER_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_RED_NETHER_BRICKS_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_RED_NETHER_BRICKS_BLOCK.get()));
         LOGGER.info("REINFORCED_BASALT_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_BASALT_BLOCK.get()));
         LOGGER.info("REINFORCED_BASALT_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_BASALT_BLOCK.get()));
+        LOGGER.info("REINFORCED_SMOOTH_BASALT_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_SMOOTH_BASALT_BLOCK.get()));
+        LOGGER.info("REINFORCED_SMOOTH_BASALT_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_SMOOTH_BASALT_BLOCK.get()));
         LOGGER.info("REINFORCED_BLACKSTONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_BLACKSTONE_BLOCK.get()));
         LOGGER.info("REINFORCED_BLACKSTONE_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_BLACKSTONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK.get()));
         LOGGER.info("FRAGILE_END_STONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(FRAGILE_END_STONE_BLOCK.get()));
         LOGGER.info("REINFORCED_END_STONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_END_STONE_BLOCK.get()));
         LOGGER.info("REINFORCED_END_STONE_BLOCK in needs_diamond_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_DIAMOND_TOOL).contains(REINFORCED_END_STONE_BLOCK.get()));
+        LOGGER.info("REINFORCED_END_STONE_BRICKS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_END_STONE_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_END_STONE_BRICKS_BLOCK in needs_diamond_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_DIAMOND_TOOL).contains(REINFORCED_END_STONE_BRICKS_BLOCK.get()));
         LOGGER.info("SYNTHETIC_OBSIDIAN_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(SYNTHETIC_OBSIDIAN_BLOCK.get()));
         LOGGER.info("SYNTHETIC_OBSIDIAN_BLOCK in needs_netherite_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_NETHERITE_TOOL).contains(SYNTHETIC_OBSIDIAN_BLOCK.get()));
         LOGGER.info("REINFORCED_GRANITE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_GRANITE_BLOCK.get()));
@@ -442,6 +752,34 @@ public class EnrollBlocks
         LOGGER.info("REINFORCED_DIORITE_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_DIORITE_BLOCK.get()));
         LOGGER.info("REINFORCED_ANDESITE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_ANDESITE_BLOCK.get()));
         LOGGER.info("REINFORCED_ANDESITE_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_ANDESITE_BLOCK.get()));
+        LOGGER.info("REINFORCED_CALCITE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_CALCITE_BLOCK.get()));
+        LOGGER.info("REINFORCED_CALCITE_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_CALCITE_BLOCK.get()));
+        LOGGER.info("REINFORCED_RED_BRICKS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_RED_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_RED_BRICKS_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_RED_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_PRISMARINE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_PRISMARINE_BLOCK.get()));
+        LOGGER.info("REINFORCED_PRISMARINE_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_PRISMARINE_BLOCK.get()));
+        LOGGER.info("REINFORCED_PRISMARINE_BRICKS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_PRISMARINE_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_PRISMARINE_BRICKS_BLOCK in needs_golden_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(NEEDS_GOLDEN_TOOL).contains(REINFORCED_PRISMARINE_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_DARK_PRISMARINE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_DARK_PRISMARINE_BLOCK.get()));
+        LOGGER.info("REINFORCED_DARK_PRISMARINE_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_DARK_PRISMARINE_BLOCK.get()));
+        LOGGER.info("REINFORCED_QUARTZ_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_QUARTZ_BLOCK.get()));
+        LOGGER.info("REINFORCED_QUARTZ_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_QUARTZ_BLOCK.get()));
+        LOGGER.info("REINFORCED_CHISELED_QUARTZ_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_CHISELED_QUARTZ_BLOCK.get()));
+        LOGGER.info("REINFORCED_CHISELED_QUARTZ_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_CHISELED_QUARTZ_BLOCK.get()));
+        LOGGER.info("REINFORCED_QUARTZ_BRICKS_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_QUARTZ_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_QUARTZ_BRICKS_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_QUARTZ_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_QUARTZ_PILLAR_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_QUARTZ_PILLAR_BLOCK.get()));
+        LOGGER.info("REINFORCED_QUARTZ_PILLAR_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_QUARTZ_PILLAR_BLOCK.get()));
+        LOGGER.info("REINFORCED_AMETHYST_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_AMETHYST_BLOCK.get()));
+        LOGGER.info("REINFORCED_AMETHYST_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_AMETHYST_BLOCK.get()));
+        LOGGER.info("REINFORCED_PURPUR_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_PURPUR_BLOCK.get()));
+        LOGGER.info("REINFORCED_PURPUR_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_PURPUR_BLOCK.get()));
+        LOGGER.info("REINFORCED_PURPUR_PILLAR_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(REINFORCED_PURPUR_PILLAR_BLOCK.get()));
+        LOGGER.info("REINFORCED_PURPUR_PILLAR_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_PURPUR_PILLAR_BLOCK.get()));
+        LOGGER.info("COMPRESSED_PACKED_MUD_BLOCK in mineable/shovel: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_SHOVEL).contains(COMPRESSED_PACKED_MUD_BLOCK.get()));
+        LOGGER.info("COMPRESSED_PACKED_MUD_BLOCK in needs_stone_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_STONE_TOOL).contains(COMPRESSED_PACKED_MUD_BLOCK.get()));
+        LOGGER.info("REINFORCED_MUD_BRICKS_BLOCK in mineable/shovel: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_SHOVEL).contains(REINFORCED_MUD_BRICKS_BLOCK.get()));
+        LOGGER.info("REINFORCED_MUD_BRICKS_BLOCK in needs_iron_tool: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.NEEDS_IRON_TOOL).contains(REINFORCED_MUD_BRICKS_BLOCK.get()));
         LOGGER.info("DISSOLVED_STONE_BLOCK in mineable/pickaxe: {}", Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(BlockTags.MINEABLE_WITH_PICKAXE).contains(DISSOLVED_STONE_BLOCK.get()));
     }
 
@@ -451,58 +789,24 @@ public class EnrollBlocks
     {
         if (event.getTabKey() == MATERIALS_TAB.getKey())
         {
-            // 添加 EXAMPLE_ITEM 到MATERIALS_TAB标签
-            event.accept(EXAMPLE_ITEM.get());
-            // 添加 EXP_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(EXP_BLOCK_ITEM.get());
-            // 添加 FIREFLY_BUSH_ITEM 到MATERIALS_TAB标签
-            event.accept(FIREFLY_BUSH_ITEM.get());
-            // 添加 FRAGILE_PLANK_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(FRAGILE_PLANK_BLOCK_ITEM.get());
-            // 添加 REINFORCED_PLANK_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_PLANK_BLOCK_ITEM.get());
-            // 添加 REINFORCED_SMOOTH_STONE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_SMOOTH_STONE_BLOCK_ITEM.get());
-            // 添加 FRAGILE_SMOOTH_STONE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(FRAGILE_SMOOTH_STONE_BLOCK_ITEM.get());
-            // 添加 BORDERLESS_GLASS_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(BORDERLESS_GLASS_BLOCK_ITEM.get());
-            // 添加 HIGH_STRENGTH_GLASS_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(HIGH_STRENGTH_GLASS_BLOCK_ITEM.get());
-            // 添加 SIX_PHASE_ICE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(SIX_PHASE_ICE_BLOCK_ITEM.get());
-            // 添加 SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK_ITEM.get());
-            // 添加 FRAGILE_DEEPSLATE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(FRAGILE_DEEPSLATE_BLOCK_ITEM.get());
-            // 添加 REINFORCED_SANDSTONE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_SANDSTONE_BLOCK_ITEM.get());
-            // 添加 REINFORCED_RED_SANDSTONE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_RED_SANDSTONE_BLOCK_ITEM.get());
-            // 添加 REINFORCED_TUFF_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_TUFF_BLOCK_ITEM.get());
-            // 添加 REINFORCED_NETHERRACK_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_NETHERRACK_BLOCK_ITEM.get());
-            // 添加 REINFORCED_BASALT_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_BASALT_BLOCK_ITEM.get());
-            // 添加 REINFORCED_BLACKSTONE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_BLACKSTONE_BLOCK_ITEM.get());
-            // 添加 FRAGILE_END_STONE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(FRAGILE_END_STONE_BLOCK_ITEM.get());
-            // 添加 REINFORCED_END_STONE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_END_STONE_BLOCK_ITEM.get());
-            // 添加 SYNTHETIC_OBSIDIAN_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(SYNTHETIC_OBSIDIAN_BLOCK_ITEM.get());
-            // 添加 REINFORCED_GRANITE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_GRANITE_BLOCK_ITEM.get());
-            // 添加 REINFORCED_DIORITE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_DIORITE_BLOCK_ITEM.get());
-            // 添加 REINFORCED_ANDESITE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(REINFORCED_ANDESITE_BLOCK_ITEM.get());
-            // 添加 DISSOLVED_STONE_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(DISSOLVED_STONE_BLOCK_ITEM.get());
-            // 添加 IMITATION_BEDROCK_BLOCK_ITEM 到MATERIALS_TAB标签
-            event.accept(IMITATION_BEDROCK_BLOCK_ITEM.get());
+            // 预留扩展空间
+            // 执行所有外部注册的处理器
+            externalHandlers.forEach(handler -> handler.accept(event));
         }
+    }
+
+    /**
+     * 允许外部模组注册物品到创造模式标签
+     * 示例用法：
+     * EnrollBlocks.registerCreativeTabHandler(event -> {
+     *     event.accept(SomeOtherMod.CUSTOM_ITEM.get());
+     *     event.accept(SomeOtherMod.ANOTHER_ITEM.get());
+     * });
+     * @param handler 处理事件的 Consumer
+     */
+    @Deprecated
+    public static void registerCreativeTabHandler(Consumer<BuildCreativeModeTabContentsEvent> handler)
+    {
+        externalHandlers.add(handler);
     }
 }

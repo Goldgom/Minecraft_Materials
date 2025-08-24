@@ -1,20 +1,15 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "key": {
-    "S": {
+  "ingredients": [
+    {
       "item": "minecraft:dripstone_block"
     },
-    "W": {
+    {
       "item": "minecraft:water_bucket"
     }
-  },
-  "pattern": [
-    "W",
-    "S"
   ],
   "result": {
     "item": "materials:dissolved_stone"
-  },
-  "show_notification": true
+  }
 }
