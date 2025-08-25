@@ -1,7 +1,6 @@
 package org.materials.materials;
 
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
