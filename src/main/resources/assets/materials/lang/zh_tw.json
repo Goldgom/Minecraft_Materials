@@ -1,6 +1,8 @@
 {
     "creative_tab.materials.example_tab": "材料",
     "More_information": "按住 Alt 鍵以獲取更多信息",
+    "item.materials.physique_strengthening_beverage": "體質強化飲料",
+    "item.materials.physique_strengthening_beverage.tooltip": "一種可以暫時增強體質的飲料。\n不過，會有副作用嗎？",
     "item.materials.example_item": "範例物品（試試看？）",
     "block.materials.exp": "EXP",
     "block.materials.firefly_bush": "螢火蟲灌木叢",

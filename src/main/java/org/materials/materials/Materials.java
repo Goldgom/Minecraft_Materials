@@ -5,9 +5,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,6 +19,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -37,12 +41,17 @@ public class Materials
         // 注册自己的注册表
         EnrollBlocks.BLOCKS.register(modEventBus);
         EnrollBlocks.ITEMS.register(modEventBus);
-        EnrollBlocks.CREATIVE_MODE_TABS.register(modEventBus);
+        EnrollItems.CREATIVE_MODE_TABS.register(modEventBus);
+        EnrollItems.ITEMS.register(modEventBus);
 
         ModFeatures.FEATURES.register(modEventBus);
 
         modEventBus.addListener(EnrollBlocks::commonSetup);
         modEventBus.addListener(EnrollBlocks::addCreative);
+
+        // 添加酿造配方监听器
+        modEventBus.addListener(EnrollItems::commonSetup);
+
         MinecraftForge.EVENT_BUS.register(this);
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

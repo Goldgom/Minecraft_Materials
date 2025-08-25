@@ -1,6 +1,8 @@
 {
     "creative_tab.materials.example_tab": "マテリアルズ",
     "More_information": "Altキーを押し続けて詳細情報を表示",
+    "item.materials.physique_strengthening_beverage": "体力強化飲料",
+    "item.materials.physique_strengthening_beverage.tooltip": "一時的に体力を強化する飲み物。\nただし、副作用はあるのだろうか？",
     "item.materials.example_item": "サンプルアイテム（試してみますか？）",
     "block.materials.exp": "EXP",
     "block.materials.firefly_bush": "ホタルの生る灌木",

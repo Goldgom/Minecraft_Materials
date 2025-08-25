@@ -1,12 +1,8 @@
 package org.materials.materials;
 
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -32,7 +28,6 @@ public class EnrollBlocks
 {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     static final List<Consumer<BuildCreativeModeTabContentsEvent>> externalHandlers = new ArrayList<>();
 
@@ -622,69 +617,6 @@ public class EnrollBlocks
             new TipsBlockItem(IMITATION_BEDROCK_BLOCK.get(), new Item.Properties(), "block.materials.imitation_bedrock.tooltip")
     );
 
-    public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () ->
-            new Item(new Item.Properties().food(new FoodProperties.Builder()
-                    .alwaysEat().nutrition(1).saturationMod(2f).build()))
-    );
-
-    public static final RegistryObject<CreativeModeTab> MATERIALS_TAB = CREATIVE_MODE_TABS.register("example_tab", () ->
-            CreativeModeTab.builder().title(Component.translatable("creative_tab.materials.example_tab"))
-                    .withTabsBefore(CreativeModeTabs.COMBAT)
-                    .icon(() -> REINFORCED_SMOOTH_STONE_BLOCK_ITEM.get().getDefaultInstance())
-                    .displayItems((parameters, output) ->
-                    {
-                        // 添加物品至物品栏中
-                        output.accept(EXAMPLE_ITEM.get());
-                        output.accept(EXP_BLOCK_ITEM.get());
-                        output.accept(FIREFLY_BUSH_ITEM.get());
-                        output.accept(FRAGILE_PLANK_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_PLANK_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_SMOOTH_STONE_BLOCK_ITEM.get());
-                        output.accept(FRAGILE_SMOOTH_STONE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_STONE_BRICKS_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_CHISELED_STONE_BRICKS_BLOCK_ITEM.get());
-                        output.accept(BORDERLESS_GLASS_BLOCK_ITEM.get());
-                        output.accept(HIGH_STRENGTH_GLASS_BLOCK_ITEM.get());
-                        output.accept(SIX_PHASE_ICE_BLOCK_ITEM.get());
-                        output.accept(SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK_ITEM.get());
-                        output.accept(FRAGILE_DEEPSLATE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_SANDSTONE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_RED_SANDSTONE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_TUFF_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_NETHERRACK_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_NETHER_BRICKS_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_CHISELED_NETHER_BRICKS_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_RED_NETHER_BRICKS_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_BASALT_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_SMOOTH_BASALT_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_BLACKSTONE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK_ITEM.get());
-                        output.accept(FRAGILE_END_STONE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_END_STONE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_END_STONE_BRICKS_BLOCK_ITEM.get());
-                        output.accept(SYNTHETIC_OBSIDIAN_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_GRANITE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_DIORITE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_ANDESITE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_CALCITE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_RED_BRICKS_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_PRISMARINE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_PRISMARINE_BRICKS_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_DARK_PRISMARINE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_QUARTZ_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_CHISELED_QUARTZ_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_QUARTZ_BRICKS_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_QUARTZ_PILLAR_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_AMETHYST_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_PURPUR_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_PURPUR_PILLAR_BLOCK_ITEM.get());
-                        output.accept(COMPRESSED_PACKED_MUD_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_MUD_BRICKS_BLOCK_ITEM.get());
-                        output.accept(DISSOLVED_STONE_BLOCK_ITEM.get());
-                        output.accept(IMITATION_BEDROCK_BLOCK_ITEM.get());
-                    })
-                    .build());
-
     static void commonSetup(final FMLCommonSetupEvent event)
     {
         LOGGER.info("HELLO FROM COMMON SETUP");
@@ -787,7 +719,7 @@ public class EnrollBlocks
     // 在 addCreative 方法中添加方块物品到创造模式标签
     static void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if (event.getTabKey() == MATERIALS_TAB.getKey())
+        if (event.getTabKey() == EnrollItems.MATERIALS_TAB.getKey())
         {
             // 预留扩展空间
             // 执行所有外部注册的处理器
