@@ -75,12 +75,9 @@ runs {
         // 覆盖工作目录
         workingDirectory project.file('run-data')
         // 数据生成参数
-        programArguments = [
-            '--mod', mod_id,
-            '--all',
-            '--output', file('src/generated/resources/').toString(),
-            '--existing', file('src/main/resources/').toString()
-        ]
+        arguments '--mod', mod_id, '--all',
+                '--output', file('src/generated/resources/').toString(),
+                '--existing', file('src/main/resources/').toString()
     }
 }
 

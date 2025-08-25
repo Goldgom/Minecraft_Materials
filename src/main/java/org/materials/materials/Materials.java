@@ -44,7 +44,8 @@ public class Materials
         // 注册自己的注册表
         EnrollBlocks.BLOCKS.register(modEventBus);
         EnrollBlocks.ITEMS.register(modEventBus);
-        EnrollBlocks.CREATIVE_MODE_TABS.register(modEventBus);
+        EnrollItems.ITEMS.register(modEventBus);
+        EnrollItems.CREATIVE_MODE_TABS.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
 
         modEventBus.addListener(EnrollBlocks::commonSetup);

@@ -1,16 +1,9 @@
 package org.materials.materials;
 
-import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-//import net.minecraft.resources.ResourceKey;
-//import net.minecraft.resources.ResourceLocation;
 import javax.annotation.Nonnull;
-//import net.minecraft.world.food.FoodProperties;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -27,7 +20,6 @@ public class EnrollBlocks
 {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     // Blocks
     public static final DeferredBlock<Block> EXP_BLOCK = BLOCKS.register("exp", () ->
@@ -376,57 +368,13 @@ public class EnrollBlocks
             new TipsBlockItem(FIREFLY_BUSH.get(), new Item.Properties(), "block.materials.firefly_bush.tooltip"))
             : null;
 
-//    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () ->
-//            new Item(new Item.Properties().food(new FoodProperties.Builder()
-//                    .alwaysEat().nutrition(1).saturationMod(2f).build()))
-//    );
-
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MATERIALS_TAB = CREATIVE_MODE_TABS.register("example_tab", () ->
-            CreativeModeTab.builder().title(Component.translatable("creative_tab.materials.example_tab"))
-                    .withTabsBefore(CreativeModeTabs.COMBAT)
-                    .icon(() -> REINFORCED_SMOOTH_STONE_BLOCK_ITEM.get().getDefaultInstance())
-                    .displayItems((parameters, output) ->
-                    {
-//                        output.accept(EXAMPLE_ITEM.get());
-                        output.accept(EXP_BLOCK_ITEM.get());
-                        output.accept(FRAGILE_PLANK_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_PLANK_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_SMOOTH_STONE_BLOCK_ITEM.get());
-                        output.accept(FRAGILE_SMOOTH_STONE_BLOCK_ITEM.get());
-                        output.accept(BORDERLESS_GLASS_BLOCK_ITEM.get());
-                        output.accept(HIGH_STRENGTH_GLASS_BLOCK_ITEM.get());
-                        output.accept(SIX_PHASE_ICE_BLOCK_ITEM.get());
-                        output.accept(SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK_ITEM.get());
-                        output.accept(FRAGILE_DEEPSLATE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_SANDSTONE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_RED_SANDSTONE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_TUFF_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_NETHERRACK_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_BASALT_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_BLACKSTONE_BLOCK_ITEM.get());
-                        output.accept(FRAGILE_END_STONE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_END_STONE_BLOCK_ITEM.get());
-                        output.accept(SYNTHETIC_OBSIDIAN_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_GRANITE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_DIORITE_BLOCK_ITEM.get());
-                        output.accept(REINFORCED_ANDESITE_BLOCK_ITEM.get());
-                        output.accept(DISSOLVED_STONE_BLOCK_ITEM.get());
-                        output.accept(IMITATION_BEDROCK_BLOCK_ITEM.get());
-                        // 条件性添加萤火虫灌木
-                        if (FIREFLY_BUSH_ITEM != null)
-                        {
-                            output.accept(FIREFLY_BUSH_ITEM.get());
-                        }
-                    })
-                    .build());
-
     static void commonSetup(final FMLCommonSetupEvent event)
     {
         LOGGER.info("HELLO FROM COMMON SETUP");
 
         if (Config.logDirtBlock)
             LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
+        LOGGER.info("{}{}", Config.magicNumberIntroduction, Config.magicNumber);
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
 
         // 运行时可改为如下检查：

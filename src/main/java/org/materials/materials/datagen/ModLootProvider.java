@@ -16,7 +16,7 @@ public class ModLootProvider
         return new LootTableProvider(
                 output,
                 Set.of(),
-                List.of(new LootTableProvider.SubProviderEntry((registries) -> new ModBlockLootProvider(registries), LootContextParamSets.BLOCK)),
+                List.of(new LootTableProvider.SubProviderEntry(ModBlockLootProvider::new, LootContextParamSets.BLOCK)),
                 lookupProvider
         );
     }
