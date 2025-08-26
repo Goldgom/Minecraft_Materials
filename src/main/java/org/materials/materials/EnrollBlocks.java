@@ -1,7 +1,9 @@
 package org.materials.materials;
 
 import net.minecraft.core.registries.BuiltInRegistries;
+
 import javax.annotation.Nonnull;
+
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -13,6 +15,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.registries.*;
+import org.jetbrains.annotations.NotNull;
 
 import static org.materials.materials.Materials.*;
 
@@ -31,41 +34,66 @@ public class EnrollBlocks
                     .lightLevel((state) -> 15)
             )
     );
+    // 注册名为 脆弱木板 的方块，采用木头颜色的默认属性
     public static final DeferredBlock<Block> FRAGILE_PLANK_BLOCK = BLOCKS.register("fragile_plank", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.WOOD)
-                    .strength(0.125f, 0.1f)
-                    .sound(SoundType.WOOD)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.WOOD) // 设置方块的颜色为木头颜色
+                    .strength(0.125f, 0.1f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.WOOD) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化木板 的方块，采用木头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_PLANK_BLOCK = BLOCKS.register("reinforced_plank", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.WOOD)
-                    .strength(4.0f, 10.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.WOOD)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.WOOD) // 设置方块的颜色为木头颜色
+                    .strength(4.0f, 10.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
+                    .sound(SoundType.WOOD) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 脆弱平滑石头 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> FRAGILE_SMOOTH_STONE_BLOCK = BLOCKS.register("fragile_smooth_stone", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(1.5f, 6.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(1.5f, 6.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化平滑石头 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_SMOOTH_STONE_BLOCK = BLOCKS.register("reinforced_smooth_stone", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(10.0f, 60.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(10.0f, 60.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化石砖 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_STONE_BRICKS_BLOCK = BLOCKS.register("reinforced_stone_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(16.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化雕刻石砖 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_CHISELED_STONE_BRICKS_BLOCK = BLOCKS.register("reinforced_chiseled_stone_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(16.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 无边框玻璃 的方块，采用玻璃颜色的默认属性
     public static final DeferredBlock<Block> BORDERLESS_GLASS_BLOCK = BLOCKS.register("borderless_glass", () ->
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.NONE)
@@ -90,6 +118,7 @@ public class EnrollBlocks
                 }
             }
     );
+    // 注册名为 高强度玻璃 的方块，采用玻璃颜色的默认属性
     public static final DeferredBlock<Block> HIGH_STRENGTH_GLASS_BLOCK = BLOCKS.register("high_strength_glass", () ->
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.NONE)
@@ -114,6 +143,7 @@ public class EnrollBlocks
                 }
             }
     );
+    // 注册名为 “六相冰” 的方块，采用冰颜色的默认属性
     public static final DeferredBlock<SpecialIceBlock> SIX_PHASE_ICE_BLOCK = BLOCKS.register("six_phase_ice", () ->
             new SpecialIceBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.ICE)
@@ -125,158 +155,342 @@ public class EnrollBlocks
                     .isViewBlocking((state, level, pos) -> false)
             )
     );
+    // 注册名为 合成强化深板岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> SYNTHETIC_REINFORCED_DEEPSLATE_BLOCK = BLOCKS.register("synthetic_reinforced_deepslate", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(50.0f, 1200.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.DEEPSLATE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(50.0f, 1200.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.DEEPSLATE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 脆弱深板岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> FRAGILE_DEEPSLATE_BLOCK = BLOCKS.register("fragile_deepslate", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(1.6f, 6.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.DEEPSLATE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(1.6f, 6.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.DEEPSLATE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化砂岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_SANDSTONE_BLOCK = BLOCKS.register("reinforced_sandstone", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.SAND)
-                    .strength(3.0f, 12.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.SAND)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.SAND) // 设置方块的颜色为沙子颜色
+                    .strength(3.0f, 12.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.SAND) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化红砂岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_RED_SANDSTONE_BLOCK = BLOCKS.register("reinforced_red_sandstone", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_ORANGE)
-                    .strength(3.0f, 12.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.SAND)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.COLOR_ORANGE) // 设置方块的颜色为橙色
+                    .strength(3.0f, 12.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.SAND) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化凝灰岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_TUFF_BLOCK = BLOCKS.register("reinforced_tuff", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(6.0f, 20.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.TUFF)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.TUFF) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化下界岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_NETHERRACK_BLOCK = BLOCKS.register("reinforced_netherrack", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.NETHER)
-                    .strength(4.0f, 12.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.NETHERRACK)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.NETHER) // 设置方块的颜色为下界颜色
+                    .strength(4.0f, 12.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.NETHERRACK) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化下界砖块 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_NETHER_BRICKS_BLOCK = BLOCKS.register("reinforced_nether_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.NETHER) // 设置方块的颜色为下界颜色
+                    .strength(10.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.NETHER_BRICKS) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化雕琢下界砖块 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_CHISELED_NETHER_BRICKS_BLOCK = BLOCKS.register("reinforced_chiseled_nether_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.NETHER) // 设置方块的颜色为下界颜色
+                    .strength(10.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.NETHER_BRICKS) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化红色下界砖块 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_RED_NETHER_BRICKS_BLOCK = BLOCKS.register("reinforced_red_nether_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.NETHER) // 设置方块的颜色为下界颜色
+                    .strength(10.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.NETHER_BRICKS) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化玄武岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_BASALT_BLOCK = BLOCKS.register("reinforced_basalt", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(5.0f, 20.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.BASALT)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(5.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.BASALT) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化平滑玄武岩 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_SMOOTH_BASALT_BLOCK = BLOCKS.register("reinforced_smooth_basalt", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(10.0f, 64.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.BASALT) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化黑石 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_BLACKSTONE_BLOCK = BLOCKS.register("reinforced_blackstone", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(6.0f, 20.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化抛光黑石砖 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK = BLOCKS.register("reinforced_polished_blackstone_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 脆弱末地石 的方块，采用末地石颜色的默认属性
     public static final DeferredBlock<Block> FRAGILE_END_STONE_BLOCK = BLOCKS.register("fragile_end_stone", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.SAND)
-                    .strength(0.5f, 2.0f)
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.SAND) // 设置方块的颜色为沙子颜色
+                    .strength(0.5f, 2.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化末地石 的方块，采用末地石颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_END_STONE_BLOCK = BLOCKS.register("reinforced_end_stone", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.SAND)
-                    .strength(45.0f, 64.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
-                    .requiresCorrectToolForDrops()
+                    .mapColor(MapColor.SAND) // 设置方块的颜色为沙子颜色
+                    .strength(45.0f, 64.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化末地石砖 的方块，采用末地石颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_END_STONE_BRICKS_BLOCK = BLOCKS.register("reinforced_end_stone_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.SAND) // 设置方块的颜色为沙子颜色
+                    .strength(45.0f, 64.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 合成黑曜石 的方块，采用黑曜石颜色的默认属性
     public static final DeferredBlock<Block> SYNTHETIC_OBSIDIAN_BLOCK = BLOCKS.register("synthetic_obsidian", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(64.0f, 1200.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(64.0f, 1200.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化花岗岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_GRANITE_BLOCK = BLOCKS.register("reinforced_granite", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(6.0f, 20.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化闪长岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_DIORITE_BLOCK = BLOCKS.register("reinforced_diorite", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(6.0f, 20.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化安山岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> REINFORCED_ANDESITE_BLOCK = BLOCKS.register("reinforced_andesite", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(6.0f, 20.0f)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
+    // 注册名为 强化方解石 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_CALCITE_BLOCK = BLOCKS.register("reinforced_calcite", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化红砖块 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_RED_BRICKS_BLOCK = BLOCKS.register("reinforced_red_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化海晶石 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_PRISMARINE_BLOCK = BLOCKS.register("reinforced_prismarine", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化海晶石砖 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_PRISMARINE_BRICKS_BLOCK = BLOCKS.register("reinforced_prismarine_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化暗海晶石 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_DARK_PRISMARINE_BLOCK = BLOCKS.register("reinforced_dark_prismarine", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.0f, 99.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化石英块 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_QUARTZ_BLOCK = BLOCKS.register("reinforced_quartz_block", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化雕刻石英块 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_CHISELED_QUARTZ_BLOCK = BLOCKS.register("reinforced_chiseled_quartz", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化石英砖块 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_QUARTZ_BRICKS_BLOCK = BLOCKS.register("reinforced_quartz_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化石英柱 的方块，采用石头颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_QUARTZ_PILLAR_BLOCK = BLOCKS.register("reinforced_quartz_pillar", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化紫水晶块 的方块，采用紫色颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_AMETHYST_BLOCK = BLOCKS.register("reinforced_amethyst_block", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE) // 设置方块的颜色为紫色
+                    .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.AMETHYST) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 5) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化紫珀块 的方块，采用紫色颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_PURPUR_BLOCK = BLOCKS.register("reinforced_purpur_block", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE) // 设置方块的颜色为紫色
+                    .strength(6.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.AMETHYST) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化紫珀柱 的方块，采用紫色颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_PURPUR_PILLAR_BLOCK = BLOCKS.register("reinforced_purpur_pillar", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE) // 设置方块的颜色为紫色
+                    .strength(6.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.AMETHYST) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 压缩泥坯 的方块，采用泥土颜色的默认属性
+    public static final DeferredBlock<Block> COMPRESSED_PACKED_MUD_BLOCK = BLOCKS.register("compressed_packed_mud", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIRT) // 设置方块的颜色为泥土颜色
+                    .strength(4.0f, 4.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.GRAVEL) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 强化泥砖 的方块，采用泥土颜色的默认属性
+    public static final DeferredBlock<Block> REINFORCED_MUD_BRICKS_BLOCK = BLOCKS.register("reinforced_mud_bricks", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIRT) // 设置方块的颜色为泥土颜色
+                    .strength(10.0f, 32.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.GRAVEL) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
+            )
+    );
+    // 注册名为 溶蚀石块 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> DISSOLVED_STONE_BLOCK = BLOCKS.register("dissolved_stone", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(0.5f, 2.0f)
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(0.5f, 2.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
             {
                 @Override
-                public void stepOn(@Nonnull net.minecraft.world.level.Level level, @Nonnull net.minecraft.core.BlockPos pos, @Nonnull net.minecraft.world.level.block.state.BlockState state, @Nonnull net.minecraft.world.entity.Entity entity)
+                public void stepOn(net.minecraft.world.level.@NotNull Level level,
+                                   net.minecraft.core.@NotNull BlockPos pos,
+                                   net.minecraft.world.level.block.state.@NotNull BlockState state,
+                                   net.minecraft.world.entity.@NotNull Entity entity)
                 {
                     super.stepOn(level, pos, state, entity);
                     if (!level.isClientSide && entity instanceof net.minecraft.world.entity.LivingEntity)
                     {
-                        // 依赖标准掉落表进行掉落，并移除方块
                         level.destroyBlock(pos, true, entity);
                     }
                 }
             }
     );
+    // 注册名为 仿制基岩 的方块，采用石头颜色的默认属性
     public static final DeferredBlock<Block> IMITATION_BEDROCK_BLOCK = BLOCKS.register("imitation_bedrock", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(65536.0f, 8.0f)
-                    .sound(SoundType.STONE)
-                    .lightLevel((state) -> 0)
+                    .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
+                    .strength(65536.0f, 8.0f) // 设置方块的硬度和爆炸抗性
+                    .sound(SoundType.STONE) // 设置方块破坏时的音效
+                    .lightLevel((state) -> 0) // 设置方块的光照等级
             )
     );
     // 条件性注册萤火虫灌木
@@ -306,6 +520,12 @@ public class EnrollBlocks
     public static final DeferredItem<Item> FRAGILE_SMOOTH_STONE_BLOCK_ITEM = ITEMS.register("fragile_smooth_stone", () ->
             new BlockItem(FRAGILE_SMOOTH_STONE_BLOCK.get(), new Item.Properties())
     );
+    public static final DeferredItem<Item> REINFORCED_STONE_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_stone_bricks", () ->
+            new BlockItem(REINFORCED_STONE_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_CHISELED_STONE_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_chiseled_stone_bricks", () ->
+            new BlockItem(REINFORCED_CHISELED_STONE_BRICKS_BLOCK.get(), new Item.Properties())
+    );
     public static final DeferredItem<Item> BORDERLESS_GLASS_BLOCK_ITEM = ITEMS.register("borderless_glass", () ->
             new BlockItem(BORDERLESS_GLASS_BLOCK.get(), new Item.Properties())
     );
@@ -333,17 +553,35 @@ public class EnrollBlocks
     public static final DeferredItem<Item> REINFORCED_NETHERRACK_BLOCK_ITEM = ITEMS.register("reinforced_netherrack", () ->
             new BlockItem(REINFORCED_NETHERRACK_BLOCK.get(), new Item.Properties())
     );
+    public static final DeferredItem<Item> REINFORCED_NETHER_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_nether_bricks", () ->
+            new BlockItem(REINFORCED_NETHER_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_CHISELED_NETHER_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_chiseled_nether_bricks", () ->
+            new BlockItem(REINFORCED_CHISELED_NETHER_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_RED_NETHER_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_red_nether_bricks", () ->
+            new BlockItem(REINFORCED_RED_NETHER_BRICKS_BLOCK.get(), new Item.Properties())
+    );
     public static final DeferredItem<Item> REINFORCED_BASALT_BLOCK_ITEM = ITEMS.register("reinforced_basalt", () ->
             new BlockItem(REINFORCED_BASALT_BLOCK.get(), new Item.Properties())
     );
+    public static final DeferredItem<Item> REINFORCED_SMOOTH_BASALT_BLOCK_ITEM = ITEMS.register("reinforced_smooth_basalt", () ->
+            new BlockItem(REINFORCED_SMOOTH_BASALT_BLOCK.get(), new Item.Properties())
+    );
     public static final DeferredItem<Item> REINFORCED_BLACKSTONE_BLOCK_ITEM = ITEMS.register("reinforced_blackstone", () ->
             new BlockItem(REINFORCED_BLACKSTONE_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_polished_blackstone_bricks", () ->
+            new BlockItem(REINFORCED_POLISHED_BLACKSTONE_BRICKS_BLOCK.get(), new Item.Properties())
     );
     public static final DeferredItem<Item> FRAGILE_END_STONE_BLOCK_ITEM = ITEMS.register("fragile_end_stone", () ->
             new BlockItem(FRAGILE_END_STONE_BLOCK.get(), new Item.Properties())
     );
     public static final DeferredItem<Item> REINFORCED_END_STONE_BLOCK_ITEM = ITEMS.register("reinforced_end_stone", () ->
             new BlockItem(REINFORCED_END_STONE_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_END_STONE_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_end_stone_bricks", () ->
+            new BlockItem(REINFORCED_END_STONE_BRICKS_BLOCK.get(), new Item.Properties())
     );
     public static final DeferredItem<Item> SYNTHETIC_OBSIDIAN_BLOCK_ITEM = ITEMS.register("synthetic_obsidian", () ->
             new TipsBlockItem(SYNTHETIC_OBSIDIAN_BLOCK.get(), new Item.Properties(), "block.materials.synthetic_obsidian.tooltip")
@@ -356,6 +594,48 @@ public class EnrollBlocks
     );
     public static final DeferredItem<Item> REINFORCED_ANDESITE_BLOCK_ITEM = ITEMS.register("reinforced_andesite", () ->
             new BlockItem(REINFORCED_ANDESITE_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_CALCITE_BLOCK_ITEM = ITEMS.register("reinforced_calcite", () ->
+            new BlockItem(REINFORCED_CALCITE_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_RED_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_red_bricks", () ->
+            new BlockItem(REINFORCED_RED_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_PRISMARINE_BLOCK_ITEM = ITEMS.register("reinforced_prismarine", () ->
+            new BlockItem(REINFORCED_PRISMARINE_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_PRISMARINE_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_prismarine_bricks", () ->
+            new BlockItem(REINFORCED_PRISMARINE_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_DARK_PRISMARINE_BLOCK_ITEM = ITEMS.register("reinforced_dark_prismarine", () ->
+            new BlockItem(REINFORCED_DARK_PRISMARINE_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_QUARTZ_BLOCK_ITEM = ITEMS.register("reinforced_quartz_block", () ->
+            new BlockItem(REINFORCED_QUARTZ_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_CHISELED_QUARTZ_BLOCK_ITEM = ITEMS.register("reinforced_chiseled_quartz", () ->
+            new BlockItem(REINFORCED_CHISELED_QUARTZ_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_QUARTZ_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_quartz_bricks", () ->
+            new BlockItem(REINFORCED_QUARTZ_BRICKS_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_QUARTZ_PILLAR_BLOCK_ITEM = ITEMS.register("reinforced_quartz_pillar", () ->
+            new BlockItem(REINFORCED_QUARTZ_PILLAR_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_AMETHYST_BLOCK_ITEM = ITEMS.register("reinforced_amethyst_block", () ->
+            new BlockItem(REINFORCED_AMETHYST_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_PURPUR_BLOCK_ITEM = ITEMS.register("reinforced_purpur_block", () ->
+            new BlockItem(REINFORCED_PURPUR_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_PURPUR_PILLAR_BLOCK_ITEM = ITEMS.register("reinforced_purpur_pillar", () ->
+            new BlockItem(REINFORCED_PURPUR_PILLAR_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> COMPRESSED_PACKED_MUD_BLOCK_ITEM = ITEMS.register("compressed_packed_mud", () ->
+            new BlockItem(COMPRESSED_PACKED_MUD_BLOCK.get(), new Item.Properties())
+    );
+    public static final DeferredItem<Item> REINFORCED_MUD_BRICKS_BLOCK_ITEM = ITEMS.register("reinforced_mud_bricks", () ->
+            new BlockItem(REINFORCED_MUD_BRICKS_BLOCK.get(), new Item.Properties())
     );
     public static final DeferredItem<Item> DISSOLVED_STONE_BLOCK_ITEM = ITEMS.register("dissolved_stone", () ->
             new TipsBlockItem(DISSOLVED_STONE_BLOCK.get(), new Item.Properties(), "block.materials.dissolved_stone.tooltip")

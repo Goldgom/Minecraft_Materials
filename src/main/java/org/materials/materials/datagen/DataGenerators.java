@@ -22,8 +22,7 @@ public class DataGenerators
     var existingFileHelper = event.getExistingFileHelper();
 
     generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput, lookupProvider));
-    generator.addProvider(event.includeServer(), ModLootProvider.create(packOutput, lookupProvider));
+    generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput, lookupProvider));
     generator.addProvider(event.includeServer(), new ModBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
     }
 }

@@ -1,0 +1,12 @@
+{
+    "values": [
+        "minecraft:forest",
+        "minecraft:birch_forest",
+        "minecraft:dark_forest",
+        "minecraft:oak_forest",
+        "minecraft:flower_forest",
+        "minecraft:sparse_jungle",
+        "minecraft:jungle",
+        "minecraft:bamboo_jungle"
+    ]
+}
