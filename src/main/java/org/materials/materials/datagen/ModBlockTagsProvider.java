@@ -138,5 +138,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 
         // 不可采集的方块不需要标签：
         // - IMITATION_BEDROCK_BLOCK
+
+        // 禁止雪层在“六相冰”上生成
+        tag(BlockTags.SNOW_LAYER_CANNOT_SURVIVE_ON).add(EnrollBlocks.SIX_PHASE_ICE_BLOCK.get());
     }
 }
