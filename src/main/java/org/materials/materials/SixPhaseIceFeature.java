@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import javax.annotation.Nonnull;
 
 public class SixPhaseIceFeature extends Feature<NoneFeatureConfiguration>
 {
@@ -22,7 +23,7 @@ public class SixPhaseIceFeature extends Feature<NoneFeatureConfiguration>
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> ctx)
+    public boolean place(@Nonnull FeaturePlaceContext<NoneFeatureConfiguration> ctx)
     {
         BlockPos origin = ctx.origin();
         WorldGenLevel level = ctx.level();

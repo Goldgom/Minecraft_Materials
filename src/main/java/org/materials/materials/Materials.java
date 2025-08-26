@@ -49,6 +49,7 @@ public class Materials
         ModFeatures.FEATURES.register(modEventBus);
 
         modEventBus.addListener(EnrollBlocks::commonSetup);
+
         // 自定义创造标签已通过 CREATIVE_MODE_TABS 的 displayItems 填充，此处不再通过事件重复添加
         // 数据生成监听已由 org.materials.materials.datagen.DataGenerators 处理
 

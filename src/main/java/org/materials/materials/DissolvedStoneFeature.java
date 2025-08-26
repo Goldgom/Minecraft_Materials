@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import javax.annotation.Nonnull;
 
 public class DissolvedStoneFeature extends Feature<NoneFeatureConfiguration>
 {
@@ -16,9 +17,8 @@ public class DissolvedStoneFeature extends Feature<NoneFeatureConfiguration>
     {
         super(codec);
     }
-
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context)
+    public boolean place(@Nonnull FeaturePlaceContext<NoneFeatureConfiguration> context)
     {
         BlockPos pos = context.origin();
         var level = context.level();

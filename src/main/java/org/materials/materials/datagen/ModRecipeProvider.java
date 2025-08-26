@@ -8,10 +8,10 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
-import org.jetbrains.annotations.NotNull;
 import org.materials.materials.EnrollBlocks;
 import org.materials.materials.EnrollItems;
 import org.materials.materials.Materials;
+import javax.annotation.Nonnull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -30,7 +30,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     @Override
-    protected void buildRecipes(@NotNull RecipeOutput output)
+    protected void buildRecipes(@Nonnull RecipeOutput output)
     {
         net.minecraft.world.level.ItemLike fireflyBush;
         if (EnrollBlocks.FIREFLY_BUSH != null)
@@ -48,13 +48,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
 
         // 合成配方 - 体质强化饮料
-//        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, EnrollItems.PHYSIQUE_STRENGTHENING_BEVERAGE_ITEM.get(), 1)
-//                .requires(Items.SUGAR, 3)
-//                .requires(Items.LAPIS_LAZULI, 3)
-//                .requires(Items.NETHER_WART, 2) // 需要下界疣
-//                .requires(Items.POTION, 1)  // 额外需要药水作为容器
-//                .unlockedBy("has_nether_wart", has(Items.NETHER_WART))  // 用下界疣解锁
-//                .save(output, Materials.MODID + ":physique_strengthening_beverage_recipe");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, EnrollItems.PHYSIQUE_STRENGTHENING_BEVERAGE_ITEM.get(), 1)
+                .requires(Items.SUGAR, 3)
+                .requires(Items.LAPIS_LAZULI, 3)
+                .requires(Items.NETHER_WART, 2) // 需要下界疣
+                .requires(Items.POTION, 1)  // 额外需要药水作为容器
+                .unlockedBy("has_nether_wart", has(Items.NETHER_WART))  // 用下界疣解锁
+                .save(output, Materials.MODID + ":physique_strengthening_beverage_recipe");
 
         // 有序合成配方 - 脆弱木板 (用普通木板制作)
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, EnrollBlocks.FRAGILE_PLANK_BLOCK_ITEM.get(), 4)
