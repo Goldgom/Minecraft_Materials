@@ -13,8 +13,6 @@
                 {
                     "condition": "minecraft:match_tool",
                     "predicate": {
-                        "tag": "minecraft:shovels",
-                        "enchantments": [],
                         "items": [
                             "minecraft:stone_shovel",
                             "minecraft:golden_shovel",

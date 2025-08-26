@@ -13,8 +13,6 @@
                 {
                     "condition": "minecraft:match_tool",
                     "predicate": {
-                        "tag": "minecraft:axes",
-                        "enchantments": [],
                         "items": [
                             "minecraft:iron_axe",
                             "minecraft:diamond_axe",

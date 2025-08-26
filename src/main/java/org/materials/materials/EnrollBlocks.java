@@ -98,6 +98,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.NONE)
                     .strength(1.125f, 100.0f)
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.GLASS)
                     .noOcclusion()
                     .isRedstoneConductor((state, level, pos) -> false)
@@ -123,6 +124,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.NONE)
                     .strength(12.0f, 1000.0f)
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.GLASS)
                     .noOcclusion()
                     .isRedstoneConductor((state, level, pos) -> false)
@@ -160,6 +162,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(50.0f, 1200.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.DEEPSLATE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -169,6 +172,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(1.6f, 6.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.DEEPSLATE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -178,6 +182,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.SAND) // 设置方块的颜色为沙子颜色
                     .strength(3.0f, 12.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.SAND) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -187,6 +192,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_ORANGE) // 设置方块的颜色为橙色
                     .strength(3.0f, 12.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.SAND) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -196,6 +202,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.TUFF) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -205,6 +212,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.NETHER) // 设置方块的颜色为下界颜色
                     .strength(4.0f, 12.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.NETHERRACK) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -214,6 +222,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.NETHER) // 设置方块的颜色为下界颜色
                     .strength(10.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.NETHER_BRICKS) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -223,6 +232,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.NETHER) // 设置方块的颜色为下界颜色
                     .strength(10.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.NETHER_BRICKS) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -241,6 +251,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(5.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.BASALT) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -250,6 +261,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(10.0f, 64.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.BASALT) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -259,6 +271,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -268,6 +281,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -286,6 +300,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.SAND) // 设置方块的颜色为沙子颜色
                     .strength(45.0f, 64.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -295,6 +310,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.SAND) // 设置方块的颜色为沙子颜色
                     .strength(45.0f, 64.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -304,6 +320,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(64.0f, 1200.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -313,6 +330,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -322,6 +340,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -331,6 +350,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -340,6 +360,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -349,6 +370,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -358,6 +380,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -367,6 +390,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -376,6 +400,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.0f, 99.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -385,6 +410,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -394,6 +420,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -403,6 +430,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -412,6 +440,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE) // 设置方块的颜色为石头颜色
                     .strength(6.4f, 24.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.STONE) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -421,6 +450,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_PURPLE) // 设置方块的颜色为紫色
                     .strength(6.0f, 20.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.AMETHYST) // 设置方块破坏时的音效
                     .lightLevel((state) -> 5) // 设置方块的光照等级
             )
@@ -430,6 +460,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_PURPLE) // 设置方块的颜色为紫色
                     .strength(6.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.AMETHYST) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -439,6 +470,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_PURPLE) // 设置方块的颜色为紫色
                     .strength(6.0f, 72.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.AMETHYST) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -448,6 +480,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DIRT) // 设置方块的颜色为泥土颜色
                     .strength(4.0f, 4.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.GRAVEL) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )
@@ -457,6 +490,7 @@ public class EnrollBlocks
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DIRT) // 设置方块的颜色为泥土颜色
                     .strength(10.0f, 32.0f) // 设置方块的硬度和爆炸抗性
+                    .requiresCorrectToolForDrops() // 需要正确的工具才能掉落物品
                     .sound(SoundType.GRAVEL) // 设置方块破坏时的音效
                     .lightLevel((state) -> 0) // 设置方块的光照等级
             )

@@ -13,8 +13,6 @@
                 {
                     "condition": "minecraft:match_tool",
                     "predicate": {
-                        "tag": "minecraft:pickaxes",
-                        "enchantments": [],
                         "items": [
                             "minecraft:diamond_pickaxe",
                             "minecraft:netherite_pickaxe"
