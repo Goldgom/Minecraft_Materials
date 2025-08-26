@@ -1,8 +1,0 @@
-{
-    "replace": false,
-    "values": [
-        "materials:exp",
-        "materials:fragile_plank",
-        "materials:reinforced_plank"
-    ]
-}
