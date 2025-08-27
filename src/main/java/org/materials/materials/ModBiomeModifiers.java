@@ -2,7 +2,7 @@ package org.materials.materials;
 
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
@@ -15,7 +15,7 @@ public class ModBiomeModifiers
     public static final ResourceKey<BiomeModifier> ADD_DISSOLVED_STONE = registerKey("add_dissolved_stone");
     public static final ResourceKey<BiomeModifier> ADD_FIREFLY_BUSH = registerKey("add_firefly_bush");
     public static final ResourceKey<BiomeModifier> ADD_SIX_PHASE_ICE = registerKey("add_six_phase_ice");
-    public static void bootstrap(BootstrapContext<BiomeModifier> context)
+    public static void bootstrap(BootstapContext<BiomeModifier> context)
     {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
@@ -25,7 +25,7 @@ public class ModBiomeModifiers
                 HolderSet.direct(placedFeatures.getOrThrow(ModConfiguredFeatures.DISSOLVED_STONE_PLACED_KEY)),
                 net.minecraft.world.level.levelgen.GenerationStep.Decoration.UNDERGROUND_ORES));
 
-        if (ModFeatures.FIREFLY_BUSH_FEATURE != null) 
+        if (ModFeatures.FIREFLY_BUSH_FEATURE != null)
         {
             context.register(ADD_FIREFLY_BUSH, new BiomeModifiers.AddFeaturesBiomeModifier(
                     biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
@@ -41,6 +41,6 @@ public class ModBiomeModifiers
 
     private static ResourceKey<BiomeModifier> registerKey(String name) 
     {
-        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Materials.MODID, name));
+        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Materials.MODID, name));
     }
 }

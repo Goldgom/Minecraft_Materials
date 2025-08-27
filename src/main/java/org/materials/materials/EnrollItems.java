@@ -10,12 +10,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
+import net.neoforged.neoforge.common.brewing.BrewingRecipeRegistry;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -37,13 +37,13 @@ public class EnrollItems
                     .stacksTo(16)
                     .food(new FoodProperties.Builder()
                             .nutrition(2)  // 提供2饥饿值 (2个营养点)
-                            .saturationModifier(0.33f)  // 饱和度修正值 (1.21.1中方法名变更)
-                            .alwaysEdible()  // 即使饱食时也能使用 (1.21.1中方法名变更)
+                            .saturationMod(0.33f)  // 饱和度修正值 (1.21.1中方法名变更)
+                            .alwaysEat()  // 即使饱食时也能使用 (1.21.1中方法名变更)
                             .build())
             )
             {
                 @Override
-                public void appendHoverText(@Nonnull ItemStack stack, @Nonnull Item.TooltipContext context, @Nonnull List<Component> tooltip, @Nonnull TooltipFlag flag)
+                public void appendHoverText(@Nonnull ItemStack stack, Level level, @Nonnull List<Component> tooltip, @Nonnull TooltipFlag flag)
                 {
                     if (Screen.hasAltDown())
                     {
@@ -93,35 +93,24 @@ public class EnrollItems
                 }
             });
 
-    // 处理酿造台配方事件类
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.GAME)
-    public static class BrewingRecipeHandler
+    // 处理酿造台配方
+    public static void onCommonSetup(final FMLCommonSetupEvent event)
     {
-        @SubscribeEvent
-        public static void onRegisterBrewingRecipes(RegisterBrewingRecipesEvent event)
+        event.enqueueWork(() ->
         {
-            Materials.LOGGER.info("Registering brewing recipes...");
-
-            // 体质强化饮料酿造配方
-            // 迅捷药水 + 青金石 = 体质强化饮料
-            event.getBuilder().addRecipe(new net.neoforged.neoforge.common.brewing.IBrewingRecipe()
+            BrewingRecipeRegistry.addRecipe(new net.neoforged.neoforge.common.brewing.IBrewingRecipe()
             {
                 @Override
-                public boolean isInput(@Nonnull ItemStack input)
+                public boolean isInput(ItemStack input)
                 {
-                    // 检查是否为迅捷药水
-                    if (!input.is(Items.POTION))
-                        return false;
-                    PotionContents contents = input.get(net.minecraft.core.component.DataComponents.POTION_CONTENTS);
-                    return contents != null && contents.potion().isPresent() &&
-                            contents.potion().get().equals(Potions.SWIFTNESS);
+                    return input.getItem() == Items.POTION
+                            && PotionUtils.getPotion(input) == Potions.SWIFTNESS;
                 }
 
                 @Override
-                public boolean isIngredient(@Nonnull ItemStack ingredient)
+                public boolean isIngredient(ItemStack ingredient)
                 {
-                    // 检查是否为青金石
-                    return ingredient.is(Items.LAPIS_LAZULI);
+                    return ingredient.getItem() == Items.LAPIS_LAZULI;
                 }
 
                 @Override
@@ -134,9 +123,7 @@ public class EnrollItems
                     return ItemStack.EMPTY;
                 }
             });
-
-            Materials.LOGGER.info("Brewing recipe registered successfully!");
-        }
+        });
     }
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MATERIALS_TAB = CREATIVE_MODE_TABS.register("example_tab", () ->

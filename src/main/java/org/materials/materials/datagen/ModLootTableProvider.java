@@ -11,6 +11,7 @@ import org.materials.materials.EnrollBlocks;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
@@ -19,14 +20,14 @@ public class ModLootTableProvider extends LootTableProvider
     public ModLootTableProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries)
     {
         super(output, Set.of(), List.of(
-                new SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK)), registries);
+                new SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK)));
     }
 
     public static class ModBlockLootTables extends BlockLootSubProvider
     {
-        public ModBlockLootTables(HolderLookup.Provider registries)
+        public ModBlockLootTables()
         {
-            super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
+            super(Set.of(), FeatureFlags.REGISTRY.allFlags(), Map.of());
         }
 
         @Override

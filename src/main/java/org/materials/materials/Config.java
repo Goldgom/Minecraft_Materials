@@ -12,11 +12,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 
-@EventBusSubscriber(modid = Materials.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class Config
 {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
@@ -63,7 +60,7 @@ public class Config
         items = ITEM_STRINGS.get().stream()
                 .map(ResourceLocation::tryParse)
                 .filter(Objects::nonNull)
-                .map(id -> BuiltInRegistries.ITEM.get(id))
+                .map(BuiltInRegistries.ITEM::get)
                 .collect(Collectors.toSet());
     }
 }

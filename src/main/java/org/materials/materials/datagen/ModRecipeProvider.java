@@ -44,7 +44,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Items.GLOWSTONE_DUST, 4)
                     .requires(fireflyBush, 2)
                     .unlockedBy(getHasName(fireflyBush), has(fireflyBush))
-                    .save(output, ResourceLocation.fromNamespaceAndPath(Materials.MODID, "firefly_bush_to_glowstone_dust"));
+                    .save(output, new ResourceLocation(Materials.MODID, "firefly_bush_to_glowstone_dust"));
         }
 
         // 合成配方 - 体质强化饮料

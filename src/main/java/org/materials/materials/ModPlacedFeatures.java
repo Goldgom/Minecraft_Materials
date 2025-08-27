@@ -4,7 +4,7 @@ package org.materials.materials;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ModPlacedFeatures
 {
-    public static void bootstrap(BootstrapContext<PlacedFeature> context)
+    public static void bootstrap(BootstapContext<PlacedFeature> context)
     {
         HolderGetter<ConfiguredFeature<?, ?>> configured = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -49,7 +49,7 @@ public class ModPlacedFeatures
                 ));
     }
 
-    private static void register(BootstrapContext<PlacedFeature> context,
+    private static void register(BootstapContext<PlacedFeature> context,
                                  net.minecraft.resources.ResourceKey<PlacedFeature> key,
                                  Holder<ConfiguredFeature<?, ?>> cfg,
                                  List<PlacementModifier> modifiers)

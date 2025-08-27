@@ -17,13 +17,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import com.mojang.serialization.MapCodec;
 import org.jetbrains.annotations.NotNull;
 
 public class FireflyBushBlock extends BushBlock implements BonemealableBlock
 {
-    public static final MapCodec<FireflyBushBlock> CODEC = simpleCodec(FireflyBushBlock::new);
-
     private static final VoxelShape SHAPE = box(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
     public FireflyBushBlock()
@@ -39,12 +36,6 @@ public class FireflyBushBlock extends BushBlock implements BonemealableBlock
     public FireflyBushBlock(Properties properties)
     {
         super(properties);
-    }
-
-    @Override
-    protected @NotNull MapCodec<? extends FireflyBushBlock> codec()
-    {
-        return CODEC;
     }
 
     @Override
