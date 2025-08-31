@@ -1,0 +1,14 @@
+# Deprecated Forge mods.toml retained for reference; NeoForge uses META-INF/neoforge.mods.toml
+# This file is intentionally left minimal to avoid duplicate metadata with NeoForge.
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "${mod_license}"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+authors = "${mod_authors}"
+description = '''${mod_description}'''
+
+# No explicit forge dependency; NeoForge metadata is authoritative.
